@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Country Example</string>
+    <string name="country_search_as_activity">Country Search As Activity</string>
+</resources>

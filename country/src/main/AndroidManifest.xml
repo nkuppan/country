@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ancient.country">
+
+    <application>
+        <activity
+            android:name=".view.activity.CountrySearchActivity"
+            android:theme="@style/CountryAppTheme.NoActionBar" />
+    </application>
+
+</manifest>

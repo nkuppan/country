@@ -1,0 +1,87 @@
+//Step I
+apply plugin: 'com.novoda.bintray-release'
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+//Step II: Add the below publish details
+publish {
+
+    def groupProjectID = 'com.ancient.country'
+    def artifactProjectID = 'country'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'naveenkumarn27'
+    repoName = 'country'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Country list search and select library'
+    website = 'https://github.com/naveenkumarn27/country'
+}
+
+
+android {
+
+    compileSdkVersion rootProject.ext.sdk.compile
+    buildToolsVersion rootProject.ext.sdk.build_tool
+
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.sdk.min
+        targetSdkVersion rootProject.ext.sdk.max
+
+        versionCode rootProject.ext.app.code
+        versionName rootProject.ext.app.name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin support libs
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$plugin.kotlin"
+
+    // Extensions = ViewModel + LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$libs.lifecycle"
+    kapt "androidx.lifecycle:lifecycle-compiler:$libs.lifecycle"
+
+    // Android support libs
+    implementation "com.google.android.material:material:$libs.material"
+    implementation "androidx.appcompat:appcompat:$libs.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$libs.constraint"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$libs.swipe"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutines"
+
+    implementation "com.google.code.gson:gson:$libs.gson"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
