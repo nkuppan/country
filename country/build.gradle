@@ -1,26 +1,24 @@
-//Step I
-apply plugin: 'com.novoda.bintray-release'
-
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-
-//Step II: Add the below publish details
-publish {
-
-    def groupProjectID = 'com.ancient.country'
-    def artifactProjectID = 'country'
-    def publishVersionID = '1.0.0'
-
-    userOrg = 'naveenkumarn27'
-    repoName = 'country'
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = 'Country list search and select library'
-    website = 'https://github.com/naveenkumarn27/country'
+ext {
+    bintrayRepo = 'Country' // your repo name
+    bintrayName = 'country' // has to be same as your library module name
+    publishedGroupId = 'com.ancient.country' // your module package name
+    libraryName = 'country'
+    artifact = 'country' // has to be same as your library module name
+    libraryDescription = 'User to pick a country from a list'
+    siteUrl = 'https://github.com/naveenkumarn27/country'
+    gitUrl = 'https://github.com/naveenkumarn27/country.git'
+    libraryVersion = '1.0'
+    developerId = 'naveenkumarn27'
+    developerName = 'Naveen Kumar Kuppan'
+    developerEmail = 'naveenkumarn2@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
 
@@ -85,3 +83,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
