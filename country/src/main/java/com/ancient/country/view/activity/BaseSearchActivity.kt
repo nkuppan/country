@@ -2,20 +2,17 @@ package com.ancient.country.view.activity
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.util.Log
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ancient.country.BuildConfig
 import com.ancient.country.R
-import com.ancient.country.databinding.ActivitySearchBinding
+import com.ancient.country.databinding.ActivityCountrySearchBinding
 import com.ancient.country.view.viewmodel.SearchViewModel
 import java.util.*
 
@@ -26,12 +23,12 @@ abstract class BaseSearchActivity : BaseActivity() {
 
     private var viewModel: SearchViewModel? = null
 
-    private var dataBinding: ActivitySearchBinding? = null
+    private var dataBinding: ActivityCountrySearchBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_search)
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_country_search)
 
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
 
@@ -97,13 +94,6 @@ abstract class BaseSearchActivity : BaseActivity() {
                     viewModel?.searchText?.value = result[0]
                 }
             }
-        }
-    }
-
-    private fun hideKeyboard(aView: View?) {
-        aView?.let {
-            val lInputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            lInputMethodManager.hideSoftInputFromWindow(aView.windowToken, 0)
         }
     }
 

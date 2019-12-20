@@ -9,10 +9,10 @@ ext {
     publishedGroupId = 'com.ancient.country' // your module package name
     libraryName = 'country'
     artifact = 'country' // has to be same as your library module name
-    libraryDescription = 'User to pick a country from a list'
+    libraryDescription = 'Search country list and pick one from it'
     siteUrl = 'https://github.com/naveenkumarn27/country'
     gitUrl = 'https://github.com/naveenkumarn27/country.git'
-    libraryVersion = '1.0'
+    libraryVersion = '1.0.2'
     developerId = 'naveenkumarn27'
     developerName = 'Naveen Kumar Kuppan'
     developerEmail = 'naveenkumarn2@gmail.com'
@@ -51,7 +51,7 @@ android {
         }
 
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

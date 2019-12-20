@@ -26,10 +26,8 @@ abstract class BaseListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListen
     private var mSwipeRefreshLayout by autoCleared<SwipeRefreshLayout>()
     private var mActionButton by autoCleared<FloatingActionButton>()
 
-    protected var showGridLayoutForTab: Boolean = false
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.content_list, container, false)
+        return inflater.inflate(R.layout.country_content_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
