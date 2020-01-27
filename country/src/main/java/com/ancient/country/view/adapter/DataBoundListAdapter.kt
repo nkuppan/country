@@ -1,4 +1,4 @@
-package com.ancient.sportscorer.common.view.adapter
+package com.ancient.country.view.adapter
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import java.util.concurrent.Executors
-import com.ancient.sportscorer.common.view.adapter.DataBoundViewHolder
 
 /**
  * A generic RecyclerView adapter that uses Data Binding & DiffUtil.

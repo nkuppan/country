@@ -50,7 +50,7 @@ class CountryListViewModel(private val aApplication: Application) : AndroidViewM
 
             if (aSearchValue?.isNotBlank() == true && lCountryList?.isNotEmpty() == true) {
                 lSearchedList.addAll(lCountryList.filter {
-                    it.countryName?.contains(aSearchValue) == true
+                    it.countryName?.contains(aSearchValue, ignoreCase = true) == true
                 })
             } else {
                 if (lCountryList != null) {

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.ancient.country.databinding.CountryListItemBinding
 import com.ancient.country.model.CountryModel
-import com.ancient.sportscorer.common.view.adapter.DataBoundListAdapter
 
 /**
  * Created by ancientinc on 2019-07-06.

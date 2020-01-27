@@ -27,6 +27,9 @@ object CountryReaderUtils {
             val inputStream = aContext.assets.open("countries.json")
             jsonReader = JsonReader(inputStream.reader())
             val list: MutableList<CountryModel> = Gson().fromJson(jsonReader, categoryType)
+            list.sortBy {
+                it.countryName
+            }
             countryList.addAll(list)
             return list
         } catch (aException: Exception) {
