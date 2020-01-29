@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/flag"
-            android:layout_width="@dimen/small_image_width"
-            android:layout_height="@dimen/small_image_width"
+            android:layout_width="@dimen/country_image_width"
+            android:layout_height="@dimen/country_image_width"
             android:contentDescription="@{viewModel.countryName}"
             android:scaleType="fitCenter"
             android:src="@{viewModel.getImage(context)}"

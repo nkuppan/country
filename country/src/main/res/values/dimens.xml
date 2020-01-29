@@ -3,5 +3,5 @@
     <dimen name="app_margin_8dp">8dp</dimen>
     <dimen name="app_margin_12dp">12dp</dimen>
     <dimen name="app_margin_16dp">16dp</dimen>
-    <dimen name="small_image_width">42dp</dimen>
+    <dimen name="country_image_width">42dp</dimen>
 </resources>
