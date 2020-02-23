@@ -16,7 +16,7 @@ Add this below in your app.gradle
 
     // app.gradle
     dependencies {
-      implementation 'com.ancient.country:country:1.0.2'
+      implementation 'com.ancient.country:country:1.0.4'
     }
 
 Implementation
