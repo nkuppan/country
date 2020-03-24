@@ -7,46 +7,54 @@ How to add to your project
 
 Add repository info in your root project gradle file
 
-    // project.gradle
-    repositories {
-      jcenter()
-    }
+```gradle
+// project.gradle
+repositories {
+    jcenter()
+}
+```
 
 Add this below in your app.gradle
 
-    // app.gradle
-    dependencies {
-      implementation 'com.ancient.country:country:1.0.4'
-    }
+```gradle
+// app.gradle
+dependencies {
+    implementation 'com.ancient.country:country:1.0.4'
+}
+```
 
 Implementation
 --------------
 
 Simple steps to acheive. Call country search activity with result.
 
-      startActivityForResult( Intent(context, CountrySearchActivity::class.java), RequestCode.COUNTRY_SEARCH_CODE)
-      
+```java
+startActivityForResult( Intent(context, CountrySearchActivity::class.java), RequestCode.COUNTRY_SEARCH_CODE)
+```
+
 You will receive your result once the user is selected the country
-  
-      override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-          super.onActivityResult(requestCode, resultCode, data)
 
-          if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
+```java
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-              data?.apply {
+        if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
 
-                  val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
+            data?.apply {
 
-                  if (country != null) {
-                      Snackbar.make(
-                              button,
-                              "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
-                              Snackbar.LENGTH_SHORT
-                      ).show()
-                  }
-              }
-          }
-      }
+                val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
+
+                if (country != null) {
+                    Snackbar.make(
+                            button,
+                            "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
+                            Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+```
 
 
 ## License
