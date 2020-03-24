@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ancient.country.model.CountryModel
 import com.ancient.country.utils.RequestCode
@@ -14,12 +16,16 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var button: Button
+    private lateinit var countryImageView: ImageView
+    private lateinit var countryName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
         button = findViewById(R.id.search_activity)
+        countryImageView = findViewById(R.id.country_image)
+        countryName = findViewById(R.id.country_name)
 
         button.setOnClickListener {
             startActivityForResult(
@@ -39,6 +45,10 @@ class MainActivity : AppCompatActivity() {
                 val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
 
                 if (country != null) {
+
+                    countryImageView.setImageDrawable(country.getImage(this@MainActivity))
+                    countryName.text = country.countryName
+
                     Snackbar.make(
                             button,
                             "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
