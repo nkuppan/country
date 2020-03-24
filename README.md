@@ -5,6 +5,10 @@ Country's list with flag image. Can launch this activity to show the list of cou
 How to add to your project
 --------------
 
+Sample implementation gif file for country selection and using search functionality 
+
+<img src="screenshots/country.gif" width="270" height="480"/>
+
 Add repository info in your root project gradle file
 
 ```gradle
@@ -35,25 +39,22 @@ startActivityForResult( Intent(context, CountrySearchActivity::class.java), Requ
 You will receive your result once the user is selected the country
 
 ```java
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
-
-            data?.apply {
-
-                val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
-
-                if (country != null) {
-                    Snackbar.make(
-                            button,
-                            "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
-                            Snackbar.LENGTH_SHORT
-                    ).show()
-                }
+    if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
+        data?.apply {
+            val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
+            if (country != null) {
+                Snackbar.make(
+                        button,
+                        "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
+                        Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }
+}
 ```
 
 
