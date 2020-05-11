@@ -1,5 +1,7 @@
 Country Selection Library
 ===========================
+[ ![Download](https://api.bintray.com/packages/naveenkumarn27/Country/country/images/download.svg) ](https://bintray.com/naveenkumarn27/Country/country/_latestVersion)
+
 Country's list with flag image. Can launch this activity to show the list of country with flag or without it.
 
 How to add to your project
@@ -23,7 +25,7 @@ Add this below in your app.gradle
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.country:country:1.0.4'
+    implementation 'com.ancient.country:country:1.0.5'
 }
 ```
 
