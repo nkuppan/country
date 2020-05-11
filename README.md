@@ -32,13 +32,15 @@ Implementation
 
 Simple steps to acheive. Call country search activity with result.
 
-```java
+Starting country selection as activity based
+
+```kotlin
 startActivityForResult( Intent(context, CountrySearchActivity::class.java), RequestCode.COUNTRY_SEARCH_CODE)
 ```
 
 You will receive your result once the user is selected the country
 
-```java
+```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
 
@@ -57,6 +59,16 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 }
 ```
 
+Starting country selection as a dialog
+```kotlin
+    val fragmentTransaction = supportFragmentManager.beginTransaction()
+    val dialogFragment = CountryListDialog()
+    dialogFragment.countrySelection = { aCountry ->
+        dialogFragment.dismiss()
+        //Handle your selection
+    }
+    dialogFragment.show(fragmentTransaction, "dialog")
+```
 
 ## License
 
