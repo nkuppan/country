@@ -61,23 +61,23 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin support libs
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$plugin.kotlin"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$plugin.kotlin"
 
     // Extensions = ViewModel + LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:$libs.lifecycle"
+    api "androidx.lifecycle:lifecycle-extensions:$libs.lifecycle"
     kapt "androidx.lifecycle:lifecycle-compiler:$libs.lifecycle"
 
     // Android support libs
-    implementation "com.google.android.material:material:$libs.material"
-    implementation "androidx.appcompat:appcompat:$libs.appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$libs.constraint"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$libs.swipe"
+    api "com.google.android.material:material:$libs.material"
+    api "androidx.appcompat:appcompat:$libs.appcompat"
+    api "androidx.constraintlayout:constraintlayout:$libs.constraint"
+    api "androidx.swiperefreshlayout:swiperefreshlayout:$libs.swipe"
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutines"
 
-    implementation "com.google.code.gson:gson:$libs.gson"
+    api "com.google.code.gson:gson:$libs.gson"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

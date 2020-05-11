@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Country Example</string>
     <string name="country_search_as_activity">Country Search As Activity</string>
+    <string name="country_search_as_dialog">Country Search As Dialog</string>
     <string name="country">country</string>
     <string name="country_placeholder">[Country Name]</string>
+    <string name="country_code">[Country Code]</string>
+    <string name="country_dial_code">[Country Dial Code]</string>
 </resources>

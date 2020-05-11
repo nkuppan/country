@@ -4,8 +4,8 @@ buildscript {
     ext {
 
         plugin = [
-                gradle: '3.5.3',
-                kotlin: '1.3.61'
+                gradle: '3.6.3',
+                kotlin: '1.3.72'
         ]
 
         app = [
@@ -21,7 +21,7 @@ buildscript {
         ]
 
         libs = [
-                material   : '1.2.0-alpha02',
+                material   : '1.2.0-alpha06',
                 appcompat  : '1.1.0',
                 constraint : '2.0.0-beta4',
                 swipe      : '1.0.0',

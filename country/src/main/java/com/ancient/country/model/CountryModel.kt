@@ -20,6 +20,9 @@ open class CountryModel() : Parcelable {
     @SerializedName("code")
     var countryCode: String? = null
 
+    @SerializedName("dial_code")
+    var dialCode: String? = null
+
     @SerializedName("group")
     var countryGroup: String? = null
 
@@ -29,6 +32,7 @@ open class CountryModel() : Parcelable {
     constructor(parcel: Parcel) : this() {
         countryName = parcel.readString()
         countryCode = parcel.readString()
+        dialCode = parcel.readString()
         countryGroup = parcel.readString()
         countryStates = parcel.readString()
     }
@@ -75,6 +79,7 @@ open class CountryModel() : Parcelable {
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(countryName)
         parcel.writeString(countryCode)
+        parcel.writeString(dialCode)
         parcel.writeString(countryGroup)
         parcel.writeString(countryStates)
     }
