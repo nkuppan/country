@@ -10,8 +10,8 @@ android:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
   components:
-    - tools
     - platform-tools
+    - tools
     # The BuildTools version used by your project
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     # The SDK version used to compile your project
@@ -21,5 +21,29 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
+
+before_install:
+  - yes | sdkmanager "platforms;android-29"
+
+before_script:
+  - chmod +x gradlew
+
 script:
   - ./gradlew build check
+  - ./gradlew test
+  - ./gradlew assembleDebug
+
+deploy:
+  provider: releases
+  api-key: $GITHUB_API_KEY
+  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
+  skip_cleanup: true
+  name: $TRAVIS_TAG
+  body: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis CI on $(date +'%F %T %Z').
+  overwrite: true
+  target_commitish: $TRAVIS_COMMIT
+  on:
+    tags: true
+
+after_deploy:
+  - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
