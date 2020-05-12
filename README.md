@@ -1,6 +1,8 @@
 Country Selection Library
 ===========================
 [ ![Download](https://api.bintray.com/packages/naveenkumarn27/Country/country/images/download.svg) ](https://bintray.com/naveenkumarn27/Country/country/_latestVersion)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![Build Status](https://travis-ci.org/naveenkumarn27/country.svg?branch=master)](https://travis-ci.org/naveenkumarn27/country)
 
 Country's list with flag image. Can launch this activity to show the list of country with flag or without it.
 
