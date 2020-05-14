@@ -6,4 +6,6 @@
     <string name="country_placeholder">[Country Name]</string>
     <string name="country_code">[Country Code]</string>
     <string name="country_dial_code">[Country Dial Code]</string>
+    <string name="country_currency_code">[Country Currency Code]</string>
+    <string name="country_symbol">[Currency Symbol]</string>
 </resources>

@@ -25,6 +25,8 @@ abstract class BaseSearchActivity : BaseActivity() {
 
     private var dataBinding: ActivityCountrySearchBinding? = null
 
+    private var isInitialized = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,6 +39,12 @@ abstract class BaseSearchActivity : BaseActivity() {
         dataBinding?.viewModel = viewModel
 
         viewModel?.searchText?.observe(this, Observer {
+
+            if (!isInitialized) {
+                isInitialized = true
+                return@Observer
+            }
+
             processValue(it)
         })
 

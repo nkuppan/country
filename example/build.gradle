@@ -4,15 +4,33 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+
+    signingConfigs {
+        release {
+            storeFile file('../sample.jks')
+            storePassword 'sample123'
+            keyAlias = 'sample'
+            keyPassword 'sample123'
+        }
+    }
+
+    compileSdkVersion rootProject.ext.sdk.compile
+    buildToolsVersion rootProject.ext.sdk.build_tool
+
     defaultConfig {
-        applicationId "com.ancient.example"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+
+        applicationId 'com.ancient.sportscorer'
+
+        minSdkVersion rootProject.ext.sdk.min
+        targetSdkVersion rootProject.ext.sdk.max
+
+        versionCode rootProject.ext.app.code
+        versionName rootProject.ext.app.name
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        signingConfig signingConfigs.release
     }
 
     dataBinding {
@@ -21,7 +39,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

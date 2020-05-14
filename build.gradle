@@ -17,7 +17,7 @@ buildscript {
                 min       : 21,
                 max       : 29,
                 compile   : 29,
-                build_tool: "28.0.3"
+                build_tool: "29.0.2"
         ]
 
         libs = [

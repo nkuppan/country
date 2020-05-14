@@ -56,12 +56,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeValues(country: CountryModel?) {
+
         if (country != null) {
 
-            dataBinding.countryName.text = country.countryName
+            dataBinding.countryName.text = "Name\t\t : ${country.countryName}"
             dataBinding.countryImage.setImageDrawable(country.getImage(this@MainActivity))
-            dataBinding.countryCode.text = country.countryCode
-            dataBinding.countryDialCode.text = country.dialCode
+            dataBinding.countryCode.text = "Code\t\t : ${country.countryCode}"
+            dataBinding.countryDialCode.text = "Dial Code\t\t : ${country.dialCode}"
+            dataBinding.countryCurrencyCode.text = "Currency Code\t\t : ${country.currencyCode}"
+            dataBinding.countrySymbol.text = "Currency Symbol\t\t : ${country.currency?.symbol ?: "[ NONE ]"}"
 
             Snackbar.make(
                     dataBinding.root,

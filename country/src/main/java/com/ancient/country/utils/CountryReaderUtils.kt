@@ -4,9 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.ancient.country.model.CountryModel
+import com.ancient.country.model.CurrencyModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
+import org.json.JSONObject
 
 /**
  * Created by ancientinc on 2019-07-06.
@@ -14,6 +16,9 @@ import com.google.gson.stream.JsonReader
 object CountryReaderUtils {
 
     private const val COUNTRIES_FILE_NAME: String = "countries.json"
+    private const val COUNTRIES_DIAL_FILE_NAME: String = "countries_dial.json"
+    private const val COUNTRIES_CURRENCY_FILE_NAME: String = "country_currency_code.json"
+    private const val COUNTRIES_CURRENCY_SYMBOLS_FILE_NAME: String = "countries_currency_symbols.json"
 
     private val countryList: MutableList<CountryModel> = mutableListOf()
 
@@ -58,28 +63,58 @@ object CountryReaderUtils {
         }
     }
 
-    fun mergeCountryDialCode(aContext: Context) {
+    fun mergeCountryCurrencies(aContext: Context) {
 
         var countryList: MutableList<CountryModel>? = readCountryList(aContext, COUNTRIES_FILE_NAME)
 
-        val countryDialCodeList = readCountryList(aContext, "countries_dial.json")
+        val currencySymbolsList = readCurrencyList(aContext, COUNTRIES_CURRENCY_SYMBOLS_FILE_NAME)
 
-        if (countryList?.isNotEmpty() == true && countryDialCodeList?.isNotEmpty() == true) {
+        if (countryList?.isNotEmpty() == true && currencySymbolsList?.isNotEmpty() == true) {
 
             countryList.forEach { aCountry ->
-                countryDialCodeList.find { aCountry.countryCode == it.countryCode }?.let {
-                    aCountry.dialCode = it.dialCode
+                currencySymbolsList.find { aCountry.currencyCode == it.code }?.let {
+                    aCountry.currency = it
                 }
             }
 
-            countryList = countryList.filter {
-                it.dialCode?.isNotBlank() == true
-            }.toMutableList()
+            countryList = countryList.filter { it.currencyCode?.isNotBlank() == true }.toMutableList()
 
             if (countryList.isNotEmpty()) {
                 convertToJsonString(countryList)
             }
         }
+    }
+
+    private fun readCurrencyList(aContext: Context, aAssetFileName: String?): MutableList<CurrencyModel>? {
+
+        if (aAssetFileName.isNullOrBlank()) {
+            return null
+        }
+
+        val currencyList: MutableList<CurrencyModel> = arrayListOf()
+        try {
+            val jsonString = aContext.assets.open(aAssetFileName).bufferedReader().use {
+                it.readText()
+            }
+
+            val jsonObject = JSONObject(jsonString)
+            val keys = jsonObject.keys()
+
+            if (keys.hasNext()) {
+                do {
+                    val keyValue = keys.next()
+                    val jsonValue: JSONObject = jsonObject.get(keyValue) as JSONObject
+                    val currency: CurrencyModel = Gson().fromJson(jsonValue.toString(), CurrencyModel::class.java)
+                    currencyList.add(currency)
+                } while (keys.hasNext())
+            }
+
+            return currencyList
+        } catch (aException: Exception) {
+            Log.e("", "Error seeding database", aException)
+        }
+
+        return null
     }
 
     private fun convertToJsonString(aCountryList: MutableList<CountryModel>) {
