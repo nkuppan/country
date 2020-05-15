@@ -12,7 +12,7 @@ ext {
     libraryDescription = 'Search country list and pick one from it'
     siteUrl = 'https://github.com/naveenkumarn27/country'
     gitUrl = 'https://github.com/naveenkumarn27/country.git'
-    libraryVersion = '1.0.5'
+    libraryVersion = '1.0.6'
     developerId = 'naveenkumarn27'
     developerName = 'Naveen Kumar Kuppan'
     developerEmail = 'naveenkumarn2@gmail.com'

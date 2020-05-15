@@ -4,12 +4,12 @@ Country Selection Library
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![Build Status](https://travis-ci.org/naveenkumarn27/country.svg?branch=master)](https://travis-ci.org/naveenkumarn27/country)
 
-Country's list with flag image. Can launch this activity to show the list of country with flag or without it.
+Country's list with flag image. Can launch this as an activity to show the list of country with flag or as a dialog.
 
 How to add to your project
 --------------
 
-Sample implementation gif file for country selection and using search functionality 
+Sample implementation gif for country selection and using search functionality 
 
 <img src="screenshots/country.gif" width="270" height="480"/>
 
@@ -27,14 +27,14 @@ Add this below in your app.gradle
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.country:country:1.0.5'
+    implementation 'com.ancient.country:country:1.0.6'
 }
 ```
 
 Implementation
 --------------
 
-Simple steps to acheive. Call country search activity with result.
+Simple steps to achieve. Call country search activity with result.
 
 Starting country selection as activity based
 
@@ -65,13 +65,13 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 
 Starting country selection as a dialog
 ```kotlin
-    val fragmentTransaction = supportFragmentManager.beginTransaction()
-    val dialogFragment = CountryListDialog()
-    dialogFragment.countrySelection = { aCountry ->
-        dialogFragment.dismiss()
-        //Handle your selection
-    }
-    dialogFragment.show(fragmentTransaction, "dialog")
+val fragmentTransaction = supportFragmentManager.beginTransaction()
+val dialogFragment = CountryListDialog()
+dialogFragment.countrySelection = { aCountry ->
+    dialogFragment.dismiss()
+    //Handle your selection
+}
+dialogFragment.show(fragmentTransaction, "dialog")
 ```
 
 
