@@ -79,5 +79,13 @@
             android:text="@string/country_search_as_dialog"
             android:textColor="@color/icon_white_color" />
 
+        <Button
+            android:id="@+id/search_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/country_search_as_bottom_sheet"
+            android:textColor="@color/icon_white_color" />
+
     </LinearLayout>
 </layout>

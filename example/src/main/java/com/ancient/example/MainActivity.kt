@@ -10,7 +10,8 @@ import com.ancient.country.model.CountryModel
 import com.ancient.country.utils.RequestCode
 import com.ancient.country.utils.RequestParam
 import com.ancient.country.view.activity.CountrySearchActivity
-import com.ancient.country.view.fragment.CountryListDialog
+import com.ancient.country.view.fragment.CountryListBottomSheet
+import com.ancient.country.view.fragment.CountryListDialogFragment
 import com.ancient.example.databinding.MainActivityBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -32,12 +33,22 @@ class MainActivity : AppCompatActivity() {
 
         dataBinding.searchDialog.setOnClickListener {
             val ft = supportFragmentManager.beginTransaction()
-            val dialogFragment = CountryListDialog()
-            dialogFragment.countrySelection = {
+            val countryListDialogFragment = CountryListDialogFragment()
+            countryListDialogFragment.countrySelection = {
                 changeValues(it)
-                dialogFragment.dismiss()
+                countryListDialogFragment.dismiss()
             }
-            dialogFragment.show(ft, "dialog")
+            countryListDialogFragment.show(ft, "dialog")
+        }
+
+        dataBinding.searchBottomSheet.setOnClickListener {
+            val ft = supportFragmentManager.beginTransaction()
+            val countryListBottomSheet = CountryListBottomSheet()
+            countryListBottomSheet.countrySelection = {
+                changeValues(it)
+                countryListBottomSheet.dismiss()
+            }
+            countryListBottomSheet.show(ft, "bottom_sheet_dialog")
         }
     }
 

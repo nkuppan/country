@@ -8,4 +8,5 @@
     <string name="country_dial_code">[Country Dial Code]</string>
     <string name="country_currency_code">[Country Currency Code]</string>
     <string name="country_symbol">[Currency Symbol]</string>
+    <string name="country_search_as_bottom_sheet">Country Search As Bottom Sheet</string>
 </resources>

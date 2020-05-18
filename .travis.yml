@@ -37,7 +37,7 @@ deploy:
   provider: releases
   api-key: $GITHUB_API_KEY
   file:
-    - $TRAVIS_BUILD_DIR/app/build/outputs/apk/release/example-release.apk
+    - $TRAVIS_BUILD_DIR/example/build/outputs/apk/release/example-release.apk
     - $TRAVIS_BUILD_DIR/country/build/outputs/aar/country-release.aar
   skip_cleanup: true
   name: $TRAVIS_TAG

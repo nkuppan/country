@@ -27,7 +27,7 @@ Add this below in your app.gradle
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.country:country:1.0.6'
+    implementation 'com.ancient.country:country:1.0.7'
 }
 ```
 
@@ -65,15 +65,25 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 
 Starting country selection as a dialog
 ```kotlin
-val fragmentTransaction = supportFragmentManager.beginTransaction()
-val dialogFragment = CountryListDialog()
-dialogFragment.countrySelection = { aCountry ->
-    dialogFragment.dismiss()
-    //Handle your selection
+val ft = supportFragmentManager.beginTransaction()
+val countryListDialogFragment = CountryListDialogFragment()
+countryListDialogFragment.countrySelection = {
+    changeValues(it)
+    countryListDialogFragment.dismiss()
 }
-dialogFragment.show(fragmentTransaction, "dialog")
+countryListDialogFragment.show(ft, "dialog")
 ```
 
+Starting country selection as a bottom sheet dialog
+```kotlin
+val ft = supportFragmentManager.beginTransaction()
+val countryListBottomSheet = CountryListBottomSheet()
+countryListBottomSheet.countrySelection = {
+    changeValues(it)
+    countryListBottomSheet.dismiss()
+}
+countryListBottomSheet.show(ft, "bottom_sheet_dialog")
+```
 
 ## Buy Me a Coffee
 
