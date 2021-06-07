@@ -1,6 +1,6 @@
 Country Selection Library
 ===========================
-[ ![Download](https://api.bintray.com/packages/naveenkumarn27/Country/country/images/download.svg) ](https://bintray.com/naveenkumarn27/Country/country/_latestVersion)
+[![](https://jitpack.io/v/naveenkumarn27/country.svg)](https://jitpack.io/#naveenkumarn27/country)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![Build Status](https://travis-ci.org/naveenkumarn27/country.svg?branch=master)](https://travis-ci.org/naveenkumarn27/country)
 
@@ -17,8 +17,11 @@ Add repository info in your root project gradle file
 
 ```gradle
 // project.gradle
-repositories {
-    jcenter()
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
 }
 ```
 
@@ -27,7 +30,7 @@ Add this below in your app.gradle
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.country:country:1.0.7'
+	        implementation 'com.github.naveenkumarn27:country:1.0.7'
 }
 ```
 
