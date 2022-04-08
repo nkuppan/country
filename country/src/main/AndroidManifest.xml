@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ancient.country">
+    package="com.nkuppan.country">
 
     <application>
         <activity
-            android:name=".view.activity.CountrySearchActivity"
+            android:name="com.nkuppan.country.view.activity.CountrySearchActivity"
+            android:exported="true"
             android:theme="@style/CountryAppTheme.NoActionBar" />
     </application>
 

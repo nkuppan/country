@@ -1,67 +1,39 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import com.nkuppan.country.buildsrc.Libs
 
 buildscript {
-    ext {
-
-        plugin = [
-                gradle: '3.6.3',
-                kotlin: '1.3.72'
-        ]
-
-        app = [
-                code: 1,
-                name: '1.0.0'
-        ]
-
-        sdk = [
-                min       : 21,
-                max       : 29,
-                compile   : 29,
-                build_tool: "29.0.2"
-        ]
-
-        libs = [
-                material   : '1.2.0-alpha06',
-                appcompat  : '1.1.0',
-                constraint : '2.0.0-beta4',
-                swipe      : '1.0.0',
-                vector     : '1.1.0',
-                coroutines : '1.1.1',
-                lifecycle  : '2.2.0',
-                junit      : '4.13-beta-2',
-                espresso   : '3.2.0-beta01',
-                uiautomator: '2.2.0',
-                gson       : '2.8.5',
-        ]
-    }
-
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-
-        classpath "com.android.tools.build:gradle:${plugin.gradle}"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$plugin.kotlin"
-
-        //Added for bintray upload
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath Libs.androidGradlePlugin
+        classpath Libs.Kotlin.gradlePlugin
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint(Libs.ktlint) {
+        attributes {
+            attribute(Bundling.BUNDLING_ATTRIBUTE, getObjects().named(Bundling, Bundling.EXTERNAL))
+        }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt"
 }
 
-subprojects {
-    tasks.withType(Javadoc).all { enabled = false }
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
 }

@@ -1,90 +1,74 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+import com.nkuppan.country.buildsrc.Libs
+import com.nkuppan.country.buildsrc.Versions
 
-ext {
-    bintrayRepo = 'Country' // your repo name
-    bintrayName = 'country' // has to be same as your library module name
-    publishedGroupId = 'com.ancient.country' // your module package name
-    libraryName = 'country'
-    artifact = 'country' // has to be same as your library module name
-    libraryDescription = 'Search country list and pick one from it'
-    siteUrl = 'https://github.com/naveenkumarn27/country'
-    gitUrl = 'https://github.com/naveenkumarn27/country.git'
-    libraryVersion = '1.0.7'
-    developerId = 'naveenkumarn27'
-    developerName = 'Naveen Kumar Kuppan'
-    developerEmail = 'naveenkumarn2@gmail.com'
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
-
 android {
-
-    compileSdkVersion rootProject.ext.sdk.compile
-    buildToolsVersion rootProject.ext.sdk.build_tool
-
+    compileSdk Versions.compileSdk
     defaultConfig {
-
-        minSdkVersion rootProject.ext.sdk.min
-        targetSdkVersion rootProject.ext.sdk.max
-
-        versionCode rootProject.ext.app.code
-        versionName rootProject.ext.app.name
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        minSdk Versions.minSdk
+        targetSdk Versions.targetSdk
+        testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 
-    dataBinding {
-        enabled = true
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 
-    buildTypes {
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
 
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    packagingOptions {
+        exclude "**/attach_hotspot_windows.dll"
+        exclude "META-INF/licenses/**"
+        exclude "META-INF/AL2.0"
+        exclude "META-INF/LGPL2.1"
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     // Kotlin support libs
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$plugin.kotlin"
+    api(Libs.Kotlin.stdlib)
 
     // Extensions = ViewModel + LiveData
-    api "androidx.lifecycle:lifecycle-extensions:$libs.lifecycle"
-    kapt "androidx.lifecycle:lifecycle-compiler:$libs.lifecycle"
+    api(Libs.AndroidX.Lifecycle.liveDataKtx)
+    api(Libs.AndroidX.Lifecycle.viewModelKtx)
+    api(Libs.AndroidX.Lifecycle.runtime)
 
     // Android support libs
-    api "com.google.android.material:material:$libs.material"
-    api "androidx.appcompat:appcompat:$libs.appcompat"
-    api "androidx.constraintlayout:constraintlayout:$libs.constraint"
-    api "androidx.swiperefreshlayout:swiperefreshlayout:$libs.swipe"
+    api(Libs.Google.material)
 
-    // Coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutines"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutines"
+    api(Libs.AndroidX.Core.ktx)
+    api(Libs.AndroidX.appCompat)
+    api(Libs.AndroidX.constraintLayout)
+    api(Libs.AndroidX.recyclerView)
+    api(Libs.AndroidX.swipeRefreshLayout)
 
-    api "com.google.code.gson:gson:$libs.gson"
+    api(Libs.Kotlin.Coroutines.core)
+    api(Libs.Kotlin.Coroutines.android)
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-}
+    api(Libs.Google.gson)
 
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
-    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

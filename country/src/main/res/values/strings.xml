@@ -5,4 +5,5 @@
     <string name="voice_search">Voice Search</string>
     <string name="speech_prompt">Speech prompt</string>
     <string name="search_country">Search Country</string>
+    <string name="add">add</string>
 </resources>
