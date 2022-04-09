@@ -3,6 +3,7 @@ package com.nkuppan.example
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -41,9 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         _binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
 
-        binding.searchActivity.setOnClickListener {
+        findViewById<Button>(R.id.search_activity).setOnClickListener {
             countrySelectionReceiver.launch(
-                Intent(this@MainActivity, CountrySearchActivity::class.java)
+                Intent(this, CountrySearchActivity::class.java)
             )
         }
 

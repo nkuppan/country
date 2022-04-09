@@ -1,99 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/container"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_16dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/country_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:contentDescription="@string/country"
-            android:src="@color/grey_light" />
-
-        <TextView
-            android:id="@+id/country_name"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="@string/country_placeholder"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/country_code"
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@string/app_name" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="@string/country_code"
-            android:textSize="20sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <TextView
-            android:id="@+id/country_dial_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="@string/country_dial_code"
-            android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/country_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:contentDescription="@string/country"
+                android:src="@color/grey_light" />
 
-        <TextView
-            android:id="@+id/country_currency_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="@string/country_currency_code"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/country_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="@string/country_placeholder"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/country_symbol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="@string/country_symbol"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/country_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="@string/country_code"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/search_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/country_search_as_activity"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/country_dial_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="@string/country_dial_code"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/search_dialog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/country_search_as_dialog"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/country_currency_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="@string/country_currency_code"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/search_bottom_sheet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/country_search_as_bottom_sheet"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/country_symbol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:text="@string/country_symbol"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/switch_theme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/change_theme"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/search_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/country_search_as_activity"
+                android:textColor="@android:color/white" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/search_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/country_search_as_dialog"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/search_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/country_search_as_bottom_sheet"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/switch_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/change_theme"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
