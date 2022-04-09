@@ -4,24 +4,30 @@ Country Selection Library
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![Build Status](https://travis-ci.org/naveenkumarn27/country.svg?branch=master)](https://travis-ci.org/naveenkumarn27/country)
 
-Country's list with flag image. Can launch this as an activity to show the list of country with flag or as a dialog.
+Country selection library. Can launch this selection picker as an activity, fragment, dialog or bottom sheet to show the list of country with flag. Please follow the below implementation to access the flag selection picker.
+
+<img src="art/videos/country.gif" width="270" height="570"/>
+
+<br>
+
+| Activity | Dialog | Bottom Sheet | Dark Theme |
+| ------ | ------ | ------ | ------ |
+| ![Activity](art/screenshots/screenshot-1.png) | ![Dialog](art/screenshots/screenshot-2.png) | ![Bottom Sheet](art/screenshots/screenshot-3.png) | ![Dark Theme](art/screenshots/screenshot-4.png) |
 
 How to add to your project
 --------------
 
 Sample implementation gif for country selection and using search functionality 
 
-<img src="screenshots/country.gif" width="270" height="480"/>
-
 Add repository info in your root project gradle file
 
 ```gradle
 // project.gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
 }
 ```
 
@@ -30,17 +36,50 @@ Add this below in your app.gradle
 ```gradle
 // app.gradle
 dependencies {
-	        implementation 'com.github.naveenkumarn27:country:1.0.7'
+	implementation 'com.github.naveenkumarn27:country:1.0.7'
 }
 ```
 
-Implementation
---------------
+## Implementation
 
 Simple steps to achieve. Call country search activity with result.
 
 Starting country selection as activity based
 
+Calling as an activity:
+--------------
+```kotlin
+
+//Registering result receiver as a global variable or registering before Lifcycle.Event.CREATED
+
+private val countrySelectionReceiver = registerForActivityResult(
+	ActivityResultContracts.StartActivityForResult()
+) { result ->
+	if (result.resultCode == Activity.RESULT_OK) {
+		val country: CountryModel? =
+                	result.data?.getParcelableExtra(RequestParam.SELECTED_VALUE)
+
+            	if (country != null) {
+                	changeValues(country)
+            	}
+        }
+}
+
+override fun onCreate(savedInstanceState: Bundle?) {
+	super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.main_activity)
+
+        findViewById<Button>(R.id.select_flag).setOnClickListener {
+            countrySelectionReceiver.launch(
+                Intent(this@MainActivity, CountrySearchActivity::class.java)
+            )
+        }
+}
+```
+
+Calling as an activity with result (Legacy way):
+--------------
 ```kotlin
 startActivityForResult( Intent(context, CountrySearchActivity::class.java), RequestCode.COUNTRY_SEARCH_CODE)
 ```
@@ -66,7 +105,8 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 }
 ```
 
-Starting country selection as a dialog
+Calling as a dialog:
+--------------
 ```kotlin
 val ft = supportFragmentManager.beginTransaction()
 val countryListDialogFragment = CountryListDialogFragment()
@@ -77,7 +117,8 @@ countryListDialogFragment.countrySelection = {
 countryListDialogFragment.show(ft, "dialog")
 ```
 
-Starting country selection as a bottom sheet dialog
+Calling as a bottom sheet:
+--------------
 ```kotlin
 val ft = supportFragmentManager.beginTransaction()
 val countryListBottomSheet = CountryListBottomSheet()
@@ -86,6 +127,21 @@ countryListBottomSheet.countrySelection = {
     countryListBottomSheet.dismiss()
 }
 countryListBottomSheet.show(ft, "bottom_sheet_dialog")
+```
+
+Customize with your own UI:
+--------------
+Can read the available countries by using below link and show them in the UI.
+
+```kotlin
+coroutineScope.launch {
+	val countryList = readCountryList(getApplication())
+}
+
+//To read flag image drawable
+
+countryModel.getCountryImage(context)
+
 ```
 
 ## License
