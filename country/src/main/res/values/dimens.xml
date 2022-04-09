@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_margin_8dp">8dp</dimen>
-    <dimen name="app_margin_12dp">12dp</dimen>
-    <dimen name="app_margin_16dp">16dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
     <dimen name="country_image_width">42dp</dimen>
 </resources>

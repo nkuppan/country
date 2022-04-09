@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="CountryAppBaseTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryLight</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryLightDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Platform.V24.Theme.CountryApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor">@color/white_70</item>
     </style>
 
-    <color name="icon_color">#6A6A6A</color>
-    <color name="icon_dark_color">#6A6A6A</color>
-    <color name="icon_white_color">#FFFFFF</color>
-    <color name="background_color">#FFFFFF</color>
+    <style name="Platform.Theme.CountryApp" parent="Platform.V24.Theme.CountryApp" />
+
+    <style name="Base.Theme.CountryApp" parent="Platform.Theme.CountryApp">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="appBarLayoutStyle">@style/Widget.MaterialComponents.AppBarLayout.Surface</item>
+        <item name="materialAlertDialogTheme">
+            @style/ThemeOverlay.MaterialComponents.MaterialAlertDialog
+        </item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.CountryApp.BottomSheetDialog</item>
+    </style>
+
+    <style name="Theme.CountryApp" parent="Base.Theme.CountryApp">
+        <item name="colorPrimary">@color/weather_green_700</item>
+        <item name="colorPrimaryVariant">@color/weather_green_900</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/weather_blue_900</item>
+        <item name="colorSecondaryVariant">@color/weather_blue_900</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorError">@color/weather_red_600</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <style name="Base.ThemeOverlay.CountryApp.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+    </style>
+
+    <style name="ThemeOverlay.CountryApp.BottomSheetDialog" parent="Base.ThemeOverlay.CountryApp.BottomSheetDialog">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSurface">@color/weather_blue_900</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:colorBackground">@color/weather_blue_900</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+    </style>
 
 </resources>

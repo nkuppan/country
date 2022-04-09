@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.nkuppan.country.model.CountryModel
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: MainActivityBinding? = null
     private val binding: MainActivityBinding by lazy { _binding!! }
+
+    private var isDarkTheme: Boolean = false
 
     private val countrySelectionReceiver = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -62,6 +65,18 @@ class MainActivity : AppCompatActivity() {
                 countryListBottomSheet.dismiss()
             }
             countryListBottomSheet.show(ft, "bottom_sheet_dialog")
+        }
+
+        binding.switchTheme.setOnClickListener {
+
+            isDarkTheme = !isDarkTheme
+
+            AppCompatDelegate.setDefaultNightMode(
+                if (isDarkTheme)
+                    AppCompatDelegate.MODE_NIGHT_YES
+                else
+                    AppCompatDelegate.MODE_NIGHT_NO
+            )
         }
     }
 

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="CountryAppBaseTheme" parent="Theme.AppCompat">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryNight</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryNightDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Platform.V24.Theme.CountryApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor">@color/black_40</item>
     </style>
 
-    <color name="icon_color">#BABABA</color>
-    <color name="background_color">#434343</color>
+    <style name="Theme.CountryApp" parent="Base.Theme.CountryApp">
+        <item name="colorPrimary">@color/weather_green_300</item>
+        <item name="colorPrimaryVariant">@color/weather_green_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/weather_blue_300</item>
+        <item name="colorSecondaryVariant">@color/weather_blue_300</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorError">@color/weather_red_300</item>
+        <item name="colorOnError">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+    </style>
 
 </resources>

@@ -15,8 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/listChoiceBackgroundIndicator"
-        android:padding="@dimen/app_margin_16dp">
+        android:padding="@dimen/margin_16dp">
 
         <ImageView
             android:id="@+id/flag"
@@ -32,7 +31,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/app_margin_16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
             android:text="@{viewModel.countryName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

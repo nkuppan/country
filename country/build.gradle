@@ -61,10 +61,12 @@ dependencies {
     api(Libs.AndroidX.appCompat)
     api(Libs.AndroidX.constraintLayout)
     api(Libs.AndroidX.recyclerView)
-    api(Libs.AndroidX.swipeRefreshLayout)
 
     api(Libs.Kotlin.Coroutines.core)
     api(Libs.Kotlin.Coroutines.android)
+
+    api(Libs.Glide.core)
+    kapt(Libs.Glide.compiler)
 
     api(Libs.Google.gson)
 

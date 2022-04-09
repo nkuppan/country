@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/app_margin_16dp">
+        android:padding="@dimen/margin_16dp">
 
         <ImageView
             android:id="@+id/country_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:contentDescription="@string/country"
             android:src="@color/grey_light" />
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:text="@string/country_placeholder"
             android:textSize="20sp" />
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:text="@string/country_code"
             android:textSize="20sp" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:text="@string/country_dial_code"
             android:textSize="20sp" />
 
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:text="@string/country_currency_code"
             android:textSize="20sp" />
 
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:text="@string/country_symbol"
             android:textSize="20sp" />
 
@@ -66,10 +66,10 @@
             android:id="@+id/search_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/app_margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/country_search_as_activity"
-            android:textColor="@color/icon_white_color" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/search_dialog"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/country_search_as_dialog"
-            android:textColor="@color/icon_white_color" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/search_bottom_sheet"
@@ -85,7 +85,15 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/country_search_as_bottom_sheet"
-            android:textColor="@color/icon_white_color" />
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/switch_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/change_theme"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </layout>

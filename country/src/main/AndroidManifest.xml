@@ -5,7 +5,7 @@
         <activity
             android:name="com.nkuppan.country.view.activity.CountrySearchActivity"
             android:exported="true"
-            android:theme="@style/CountryAppTheme.NoActionBar" />
+            android:theme="@style/Theme.CountryApp" />
     </application>
 
 </manifest>
