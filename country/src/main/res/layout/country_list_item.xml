@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.nkuppan.country.extention.ImageExtKt" />
+
         <import type="android.view.View" />
 
         <variable
@@ -23,7 +25,7 @@
             android:layout_height="@dimen/country_image_width"
             android:contentDescription="@{viewModel.countryName}"
             android:scaleType="fitCenter"
-            android:src="@{viewModel.getImage(context)}"
+            android:src="@{ImageExtKt.getCountryImage(viewModel, context)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/us" />

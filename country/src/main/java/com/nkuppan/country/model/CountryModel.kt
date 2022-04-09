@@ -1,13 +1,8 @@
 package com.nkuppan.country.model
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.core.content.ContextCompat
 import com.google.gson.annotations.SerializedName
-import com.nkuppan.country.R
-import java.util.*
 
 /**
  * Created by ancientinc on 2019-07-06.
@@ -60,36 +55,6 @@ open class CountryModel() : Parcelable {
         }
 
         return lStateList
-    }
-
-    fun getImage(aContext: Context): Drawable? {
-        try {
-            var toLowerCase = "$countryCode".lowercase(Locale.ENGLISH)
-
-            if (toLowerCase == "do") {
-                toLowerCase = "ic_do"
-            }
-
-            if (toLowerCase.contains("[-]".toRegex())) {
-                toLowerCase = toLowerCase.replace("[-]".toRegex(), "_")
-            }
-
-            val resourcePackageName = aContext.resources
-                .getResourcePackageName(R.drawable.ic_image)
-
-            return ContextCompat.getDrawable(
-                aContext,
-                aContext.resources.getIdentifier(
-                    toLowerCase,
-                    "drawable",
-                    resourcePackageName
-                )
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return ContextCompat.getDrawable(aContext, R.drawable.ic_image)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

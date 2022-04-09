@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
+import com.nkuppan.country.extention.getCountryImage
 import com.nkuppan.country.model.CountryModel
 import com.nkuppan.country.utils.RequestParam
 import com.nkuppan.country.view.activity.CountrySearchActivity
@@ -83,21 +84,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeValues(country: CountryModel?) {
 
-        if (country != null) {
+        country ?: return
 
-            binding.countryName.text = "Name\t\t : ${country.countryName}"
-            binding.countryImage.setImageDrawable(country.getImage(this@MainActivity))
-            binding.countryCode.text = "Code\t\t : ${country.countryCode}"
-            binding.countryDialCode.text = "Dial Code\t\t : ${country.dialCode}"
-            binding.countryCurrencyCode.text = "Currency Code\t\t : ${country.currencyCode}"
-            binding.countrySymbol.text =
-                "Currency Symbol\t\t : ${country.currency?.symbol ?: "[ NONE ]"}"
+        binding.countryName.text = "Name\t\t : ${country.countryName}"
+        binding.countryImage.setImageDrawable(country.getCountryImage(this@MainActivity))
+        binding.countryCode.text = "Code\t\t : ${country.countryCode}"
+        binding.countryDialCode.text = "Dial Code\t\t : ${country.dialCode}"
+        binding.countryCurrencyCode.text = "Currency Code\t\t : ${country.currencyCode}"
+        binding.countrySymbol.text =
+            "Currency Symbol\t\t : ${country.currency?.symbol ?: "[ NONE ]"}"
 
-            Snackbar.make(
-                binding.root,
-                "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        Snackbar.make(
+            binding.root,
+            "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 }
