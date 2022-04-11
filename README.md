@@ -35,8 +35,11 @@ Add this below in your app.gradle
 
 ```gradle
 // app.gradle
+
+def latestVersion = "1.0.7"
+
 dependencies {
-	implementation 'com.github.naveenkumarn27:country:1.0.7'
+    implementation "com.github.nkuppan:country:${latestVersion}"
 }
 ```
 
