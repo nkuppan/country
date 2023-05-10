@@ -1,4 +1,4 @@
-package com.nkuppan.country.view.fragment
+package com.nkuppan.country.presentation.country
 
 import android.app.Activity
 import android.os.Bundle
@@ -7,36 +7,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nkuppan.country.R
+import com.nkuppan.country.core.view.BaseDialogBindingFragment
 import com.nkuppan.country.databinding.FragmentCountryListBinding
-import com.nkuppan.country.extention.autoCleared
-import com.nkuppan.country.extention.promptSpeechInputForCallback
-import com.nkuppan.country.model.CountryModel
-import com.nkuppan.country.view.adapter.CountryListAdapter
-import com.nkuppan.country.view.viewmodel.CountryListViewModel
-import com.nkuppan.country.view.viewmodel.SearchViewModel
-
+import com.nkuppan.country.core.utils.promptSpeechInputForCallback
+import com.nkuppan.country.domain.model.Country
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
- * Created by ancientinc on 19/05/20.
+ * Created by ancientinc on 11/05/20.
  **/
-class CountryListBottomSheet : BottomSheetDialogFragment() {
+class CountryListDialogFragment : BaseDialogBindingFragment<FragmentCountryListBinding>() {
 
     private val countryListViewModel: CountryListViewModel by lazy {
-        ViewModelProvider(this).get(CountryListViewModel::class.java)
+        ViewModelProvider(
+            this,
+            ViewModelFactory(application =requireActivity().application)
+        ).get(CountryListViewModel::class.java)
     }
 
-    private var binding: FragmentCountryListBinding by autoCleared()
+    private val searchViewModel: SearchViewModel by lazy {
+        ViewModelProvider(this).get(SearchViewModel::class.java)
+    }
 
-    private var searchViewModel: SearchViewModel by autoCleared()
+    private lateinit var adapter: CountryListAdapter
 
-    private var adapter: CountryListAdapter by autoCleared()
-
-    var countrySelection: ((CountryModel) -> Unit)? = null
+    var countrySelection: ((Country) -> Unit)? = null
 
     private val activityResultReceiver = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -51,17 +54,18 @@ class CountryListBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onCreateView(
+    override fun inflateLayout(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val view = inflater.inflate(R.layout.fragment_country_list, container, false)
-        searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        binding = FragmentCountryListBinding.bind(view)
+    ): FragmentCountryListBinding {
+        return FragmentCountryListBinding.inflate(inflater)
+    }
+
+    override fun bindData(binding: FragmentCountryListBinding) {
+        super.bindData(binding)
         binding.viewModel = searchViewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
-        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -119,13 +123,17 @@ class CountryListBottomSheet : BottomSheetDialogFragment() {
 
         setAdapter(adapter)
 
-        countryListViewModel.countryList.observe(viewLifecycleOwner) {
-            if (it != null && it.isNotEmpty()) {
-                adapter.submitList(it)
-                setResult()
-            } else {
-                adapter.submitList(mutableListOf())
-                setNoResult()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                countryListViewModel.countryList.collectLatest {
+                    if (it.isNotEmpty()) {
+                        adapter.submitList(it)
+                        setResult()
+                    } else {
+                        adapter.submitList(mutableListOf())
+                        setNoResult()
+                    }
+                }
             }
         }
 

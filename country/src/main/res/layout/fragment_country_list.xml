@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.nkuppan.country.view.viewmodel.SearchViewModel" />
+            type="com.nkuppan.country.presentation.country.SearchViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

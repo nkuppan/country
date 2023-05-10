@@ -8,20 +8,11 @@ plugins {
 
 android {
 
-    signingConfigs {
-        release {
-            storeFile file('../sample.jks')
-            storePassword 'sample123'
-            keyAlias = 'sample'
-            keyPassword 'sample123'
-        }
-    }
+    namespace 'com.nkuppan.example'
 
     compileSdk(Versions.compileSdk)
 
     defaultConfig {
-
-        applicationId 'com.ancient.country.example'
 
         minSdk Versions.minSdk
         targetSdk Versions.targetSdk
@@ -31,8 +22,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
-        signingConfig signingConfigs.release
     }
 
     dataBinding {
@@ -54,7 +43,6 @@ dependencies {
 
     implementation "androidx.core:core-ktx:1.7.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha06"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0"
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'

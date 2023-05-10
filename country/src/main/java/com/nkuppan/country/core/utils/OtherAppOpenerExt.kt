@@ -1,4 +1,4 @@
-package com.nkuppan.country.extention
+package com.nkuppan.country.core.utils
 
 import android.content.ActivityNotFoundException
 import android.content.Intent

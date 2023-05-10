@@ -1,14 +1,14 @@
-package com.nkuppan.country.extention
+package com.nkuppan.country.core.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.nkuppan.country.R
-import com.nkuppan.country.model.CountryModel
+import com.nkuppan.country.domain.model.Country
 import java.util.*
 
 
-fun CountryModel.getCountryImage(context: Context): Drawable? {
+fun Country.getCountryImage(context: Context): Drawable? {
     try {
         var toLowerCase = "$countryCode".lowercase(Locale.ENGLISH)
 
@@ -16,8 +16,8 @@ fun CountryModel.getCountryImage(context: Context): Drawable? {
             toLowerCase = "ic_do"
         }
 
-        if (toLowerCase.contains("[-]".toRegex())) {
-            toLowerCase = toLowerCase.replace("[-]".toRegex(), "_")
+        if (toLowerCase.contains("-".toRegex())) {
+            toLowerCase = toLowerCase.replace("-".toRegex(), "_")
         }
 
         val resourcePackageName = context.resources

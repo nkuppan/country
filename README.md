@@ -10,8 +10,8 @@ Country selection library. Can launch this selection picker as an activity, frag
 
 <br>
 
-| Activity                                      | Dialog                                      | Bottom Sheet                                      | Dark Theme                                      |
-|-----------------------------------------------|---------------------------------------------|---------------------------------------------------|-------------------------------------------------|
+|                   Activity                    |                   Dialog                    |                   Bottom Sheet                    |                   Dark Theme                    |
+|:---------------------------------------------:|:-------------------------------------------:|:-------------------------------------------------:|:-----------------------------------------------:|
 | ![Activity](art/screenshots/screenshot-1.png) | ![Dialog](art/screenshots/screenshot-2.png) | ![Bottom Sheet](art/screenshots/screenshot-3.png) | ![Dark Theme](art/screenshots/screenshot-4.png) |
 
 How to add to your project
