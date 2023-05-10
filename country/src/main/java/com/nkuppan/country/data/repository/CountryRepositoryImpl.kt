@@ -1,6 +1,7 @@
 package com.nkuppan.country.data.repository
 
 import android.content.Context
+import com.google.gson.reflect.TypeToken
 import com.nkuppan.country.data.utils.openInputStreamReader
 import com.nkuppan.country.domain.model.Country
 import com.nkuppan.country.domain.repository.CountryRepository
@@ -24,7 +25,8 @@ class CountryRepositoryImpl(
         return@withContext context.openInputStreamReader(fileName = jsonFileName)
             ?.let { streamReader ->
                 return@let jsonConverter.fromStringToListOfObject<Country>(
-                    streamReader
+                    streamReader,
+                    object : TypeToken<List<Country>>() {}.type
                 )?.toMutableList()
             } ?: emptyList()
     }

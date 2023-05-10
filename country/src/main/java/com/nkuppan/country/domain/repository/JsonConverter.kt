@@ -1,6 +1,7 @@
 package com.nkuppan.country.domain.repository
 
 import java.io.InputStreamReader
+import java.lang.reflect.Type
 
 interface JsonConverter {
 
@@ -10,6 +11,7 @@ interface JsonConverter {
     ): T?
 
     fun <T> fromStringToListOfObject(
-        inputStreamReader: InputStreamReader
+        inputStreamReader: InputStreamReader,
+        type: Type
     ): List<T>?
 }
