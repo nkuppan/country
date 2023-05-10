@@ -10,8 +10,8 @@ Country selection library. Can launch this selection picker as an activity, frag
 
 <br>
 
-| Activity | Dialog | Bottom Sheet | Dark Theme |
-| ------ | ------ | ------ | ------ |
+| Activity                                      | Dialog                                      | Bottom Sheet                                      | Dark Theme                                      |
+|-----------------------------------------------|---------------------------------------------|---------------------------------------------------|-------------------------------------------------|
 | ![Activity](art/screenshots/screenshot-1.png) | ![Dialog](art/screenshots/screenshot-2.png) | ![Bottom Sheet](art/screenshots/screenshot-3.png) | ![Dark Theme](art/screenshots/screenshot-4.png) |
 
 How to add to your project
@@ -53,13 +53,13 @@ Calling as an activity:
 --------------
 ```kotlin
 
-//Registering result receiver as a global variable or registering before Lifcycle.Event.CREATED
+//Registering result receiver as a global variable or registering before Lifecycle.Event.CREATED
 
 private val countrySelectionReceiver = registerForActivityResult(
 	ActivityResultContracts.StartActivityForResult()
 ) { result ->
 	if (result.resultCode == Activity.RESULT_OK) {
-		val country: CountryModel? =
+		val country: Country? =
                 	result.data?.getParcelableExtra(RequestParam.SELECTED_VALUE)
 
             	if (country != null) {
@@ -95,7 +95,7 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 
     if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
         data?.apply {
-            val country: CountryModel? = getParcelableExtra(RequestParam.SELECTED_VALUE)
+            val country: Country? = getParcelableExtra(RequestParam.SELECTED_VALUE)
             if (country != null) {
                 Snackbar.make(
                         button,
