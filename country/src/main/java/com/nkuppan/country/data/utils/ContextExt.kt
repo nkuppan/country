@@ -1,10 +1,9 @@
 package com.nkuppan.country.data.utils
 
 import android.content.Context
-import java.io.InputStreamReader
 
-fun Context.openInputStreamReader(fileName: String): InputStreamReader? {
+fun Context.convertFileToString(fileName: String): String? {
     return kotlin.runCatching {
-        return this.assets.open(fileName).reader()
+        return this.assets.open(fileName).reader().readText()
     }.getOrNull()
 }
