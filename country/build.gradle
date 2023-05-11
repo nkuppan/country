@@ -3,8 +3,7 @@ import com.nkuppan.country.buildsrc.Versions
 
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'maven-publish'
 }
@@ -45,9 +44,6 @@ android {
 }
 
 dependencies {
-    // Kotlin support libs
-    api(Libs.Kotlin.stdlib)
-
     // Extensions = ViewModel + LiveData
     api(Libs.AndroidX.Lifecycle.liveDataKtx)
     api(Libs.AndroidX.Lifecycle.viewModelKtx)
@@ -63,9 +59,6 @@ dependencies {
 
     api(Libs.Kotlin.Coroutines.core)
     api(Libs.Kotlin.Coroutines.android)
-
-    api(Libs.Glide.core)
-    kapt(Libs.Glide.compiler)
 
     api(Libs.ThirdParty.gson)
 

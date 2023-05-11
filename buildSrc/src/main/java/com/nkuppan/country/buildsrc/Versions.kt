@@ -10,7 +10,6 @@ object Versions {
 
     const val androidGradlePlugin = "7.4.1"
     const val ktlint = "0.42.1"
-    const val glide = "4.12.0"
     const val coil = "2.2.2"
     const val playCoreUpdate = "2.0.0"
 
@@ -29,7 +28,6 @@ object Versions {
         const val constraintLayout = "2.1.4"
         const val recyclerView = "1.3.0"
         const val swipeRefreshLayout = "1.1.0"
-        const val startup = "1.1.1"
         const val lifecycle = "2.6.1"
         const val preference = "1.2.0"
         const val viewPager2 = "1.0.0"
@@ -44,11 +42,9 @@ object Versions {
         const val splashScreen = "1.0.0"
 
         object Compose {
-            const val composeCompilerVersion = "1.4.7"
             const val compose = "1.4.0"
             const val composeFoundation = "1.4.0"
             const val composeMaterial = "1.4.0"
-            const val bom = "2023.03.00"
             const val activity = "1.5.0"
             const val poolingContainer = "1.0.0-rc01"
         }
