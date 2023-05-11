@@ -6,7 +6,7 @@ object Versions {
     const val targetSdk = 33
 
     const val versionCode = 9
-    const val versionName = "1.0.8"
+    const val versionName = "1.0.9"
 
     const val androidGradlePlugin = "7.4.1"
     const val ktlint = "0.42.1"
