@@ -2,7 +2,7 @@ Country Selection Library
 ===========================
 [![](https://jitpack.io/v/naveenkumarn27/country.svg)](https://jitpack.io/#naveenkumarn27/country)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
-[![Build Status](https://travis-ci.org/naveenkumarn27/country.svg?branch=master)](https://travis-ci.org/naveenkumarn27/country)
+![Workflow](https://github.com/nkuppan/country/actions/workflows/android.yml/badge.svg)
 
 Country selection library. Can launch this selection picker as an activity, fragment, dialog or bottom sheet to show the list of country with flag. Please follow the below implementation to access the flag selection picker.
 
