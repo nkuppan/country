@@ -1,4 +1,4 @@
-name: Android CI
+name: Library Project Build
 
 on:
   push:
@@ -22,5 +22,7 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build Library with Gradle
+      run: ./gradlew :country:assembleRelease
+    - name: Build Example Project with Gradle
+      run: ./gradlew :example:assembleRelease
