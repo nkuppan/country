@@ -35,9 +35,6 @@ Add this below in your app.gradle
 
 ```gradle
 // app.gradle
-
-def latestVersion = "1.0.7"
-
 dependencies {
     implementation "com.github.nkuppan:country:${latestVersion}"
 }
@@ -93,7 +90,7 @@ You will receive your result once the user is selected the country
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
 
-    if (requestCode == RequestCode.COUNTRY_SEARCH_CODE && resultCode == Activity.RESULT_OK) {
+    if (resultCode == Activity.RESULT_OK && requestCode == RequestCode.COUNTRY_SEARCH_CODE) {
         data?.apply {
             val country: Country? = getParcelableExtra(RequestParam.SELECTED_VALUE)
             if (country != null) {
@@ -142,9 +139,7 @@ coroutineScope.launch {
 }
 
 //To read flag image drawable
-
 countryModel.getCountryImage(context)
-
 ```
 
 ## License
