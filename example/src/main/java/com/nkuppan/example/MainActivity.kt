@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
-import com.nkuppan.country.extention.getCountryImage
-import com.nkuppan.country.model.CountryModel
+import com.nkuppan.country.core.utils.getCountryImage
+import com.nkuppan.country.domain.model.Country
+import com.nkuppan.country.presentation.country.CountryListBottomSheet
+import com.nkuppan.country.presentation.country.CountryListDialogFragment
+import com.nkuppan.country.presentation.country.CountrySearchActivity
 import com.nkuppan.country.utils.RequestParam
-import com.nkuppan.country.view.activity.CountrySearchActivity
-import com.nkuppan.country.view.fragment.CountryListBottomSheet
-import com.nkuppan.country.view.fragment.CountryListDialogFragment
 import com.nkuppan.example.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
 
-            val country: CountryModel? =
+            val country: Country? =
                 result.data?.getParcelableExtra(RequestParam.SELECTED_VALUE)
 
             if (country != null) {
@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeValues(country: CountryModel?) {
+    private fun changeValues(country: Country?) {
 
         country ?: return
 
-        binding.countryName.text = "Name\t\t : ${country.countryName}"
+        binding.countryName.text = "Name\t\t : ${country.name}"
         binding.countryImage.setImageDrawable(country.getCountryImage(this@MainActivity))
         binding.countryCode.text = "Code\t\t : ${country.countryCode}"
         binding.countryDialCode.text = "Dial Code\t\t : ${country.dialCode}"
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
         Snackbar.make(
             binding.root,
-            "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
+            "Selected Country [ name, code ] [${country.name} , ${country.countryCode}]",
             Snackbar.LENGTH_SHORT
         ).show()
     }

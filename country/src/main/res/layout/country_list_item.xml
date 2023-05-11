@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.nkuppan.country.extention.ImageExtKt" />
+        <import type="com.nkuppan.country.core.utils.ImageExtKt" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.nkuppan.country.model.CountryModel" />
+            type="com.nkuppan.country.domain.model.Country" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:id="@+id/flag"
             android:layout_width="@dimen/country_image_width"
             android:layout_height="@dimen/country_image_width"
-            android:contentDescription="@{viewModel.countryName}"
+            android:contentDescription="@{viewModel.name}"
             android:scaleType="fitCenter"
             android:src="@{ImageExtKt.getCountryImage(viewModel, context)}"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16dp"
-            android:text="@{viewModel.countryName}"
+            android:text="@{viewModel.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/flag"

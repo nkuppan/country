@@ -1,13 +1,9 @@
-package com.nkuppan.country.view.viewmodel
+package com.nkuppan.country.presentation.country
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-/**
- * Created by ancientinc on 2019-07-06.
- **/
-class SearchViewModel(aApplication: Application) : AndroidViewModel(aApplication) {
+class SearchViewModel : ViewModel() {
 
     var searchText = MutableLiveData<String>()
 
