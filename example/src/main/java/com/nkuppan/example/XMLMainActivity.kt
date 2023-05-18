@@ -1,6 +1,7 @@
 package com.nkuppan.example
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.nkuppan.country.domain.model.Country
 import com.nkuppan.country.utils.getCountryImage
 import com.nkuppan.country.utils.getSelectedCountryData
+import com.nkuppan.country.utils.isCountrySelectionResult
 import com.nkuppan.country.utils.launchCountrySelectionActivity
 import com.nkuppan.country.utils.openCountrySelectionBottomSheet
 import com.nkuppan.country.utils.openCountrySelectionDialog
@@ -86,5 +88,16 @@ class XMLMainActivity : AppCompatActivity() {
             "Selected Country [ name, code ] [${country.name} , ${country.countryCode}]",
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (isCountrySelectionResult(requestCode, resultCode)) {
+            val country: Country? = data?.getSelectedCountryData()
+
+            if (country != null) {
+                changeValues(country)
+            }
+        }
     }
 }

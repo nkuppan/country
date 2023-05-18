@@ -35,6 +35,19 @@ Add this below in your app.gradle
 
 ```gradle
 // app.gradle
+
+android {
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
 dependencies {
     implementation "com.github.nkuppan:country:${latestVersion}"
 }
@@ -48,58 +61,56 @@ Starting country selection as activity based
 
 Calling as an activity:
 --------------
+
 ```kotlin
 
 //Registering result receiver as a global variable or registering before Lifecycle.Event.CREATED
+import com.nkuppan.country.utils.getCountryImage
+import com.nkuppan.country.utils.launchCountrySelectionActivity
 
 private val countrySelectionReceiver = registerForActivityResult(
-	ActivityResultContracts.StartActivityForResult()
+    ActivityResultContracts.StartActivityForResult()
 ) { result ->
-	if (result.resultCode == Activity.RESULT_OK) {
-		val country: Country? =
-                	result.data?.getParcelableExtra(RequestParam.SELECTED_VALUE)
+    if (result.resultCode == Activity.RESULT_OK) {
 
-            	if (country != null) {
-                	changeValues(country)
-            	}
+        val country: Country = result.getSelectedCountryData()
+
+        if (country != null) {
+            changeValues(country)
         }
+    }
 }
 
 override fun onCreate(savedInstanceState: Bundle?) {
-	super.onCreate(savedInstanceState)
+    super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.main_activity)
+    setContentView(R.layout.main_activity)
 
-        findViewById<Button>(R.id.select_flag).setOnClickListener {
-            countrySelectionReceiver.launch(
-                Intent(this@MainActivity, CountrySearchActivity::class.java)
-            )
-        }
+    binding.searchActivity.setOnClickListener {
+        countrySelectionReceiver.launchCountrySelectionActivity(this)
+    }
 }
 ```
 
 Calling as an activity with result (Legacy way):
 --------------
 ```kotlin
-startActivityForResult( Intent(context, CountrySearchActivity::class.java), RequestCode.COUNTRY_SEARCH_CODE)
+activity.launchCountrySelectionActivity()
 ```
 
 You will receive your result once the user is selected the country
 
 ```kotlin
+import com.nkuppan.country.utils.getSelectedCountryData
+import com.nkuppan.country.utils.isCountrySelectionResult
+
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
+    if (isCountrySelectionResult(requestCode, resultCode)) {
+        val country: Country? = data?.getSelectedCountryData()
 
-    if (resultCode == Activity.RESULT_OK && requestCode == RequestCode.COUNTRY_SEARCH_CODE) {
-        data?.apply {
-            val country: Country? = getParcelableExtra(RequestParam.SELECTED_VALUE)
-            if (country != null) {
-                Snackbar.make(
-                        button,
-                        "Selected Country [ name, code ] [${country.countryName} , ${country.countryCode}]",
-                        Snackbar.LENGTH_SHORT
-                ).show()
-            }
+        if (country != null) {
+            changeValues(country)
         }
     }
 }
@@ -108,38 +119,21 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 Calling as a dialog:
 --------------
 ```kotlin
-val ft = supportFragmentManager.beginTransaction()
-val countryListDialogFragment = CountryListDialogFragment()
-countryListDialogFragment.countrySelection = {
+import com.nkuppan.country.utils.openCountrySelectionDialog
+
+supportFragmentManager.openCountrySelectionDialog {
     changeValues(it)
-    countryListDialogFragment.dismiss()
 }
-countryListDialogFragment.show(ft, "dialog")
 ```
 
 Calling as a bottom sheet:
 --------------
 ```kotlin
-val ft = supportFragmentManager.beginTransaction()
-val countryListBottomSheet = CountryListBottomSheet()
-countryListBottomSheet.countrySelection = {
+import com.nkuppan.country.utils.openCountrySelectionBottomSheet
+
+supportFragmentManager.openCountrySelectionBottomSheet {
     changeValues(it)
-    countryListBottomSheet.dismiss()
 }
-countryListBottomSheet.show(ft, "bottom_sheet_dialog")
-```
-
-Customize with your own UI:
---------------
-Can read the available countries by using below link and show them in the UI.
-
-```kotlin
-coroutineScope.launch {
-	val countryList = readCountryList(getApplication())
-}
-
-//To read flag image drawable
-countryModel.getCountryImage(context)
 ```
 
 ## License

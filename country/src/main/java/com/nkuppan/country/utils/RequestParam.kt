@@ -31,3 +31,10 @@ fun ActivityResult.getSelectedCountryData(): Country? {
         Country::class.java
     )
 }
+
+fun Intent.getSelectedCountryData(): Country? {
+    return getParcelableValue(
+        RequestParam.SELECTED_VALUE,
+        Country::class.java
+    )
+}

@@ -1,5 +1,6 @@
 package com.nkuppan.country.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
@@ -35,4 +36,16 @@ fun FragmentManager.openCountrySelectionBottomSheet(
 
 fun ActivityResultLauncher<Intent>.launchCountrySelectionActivity(context: Context) {
     launch(Intent(context, CountrySearchActivity::class.java))
+}
+
+fun Activity.launchCountrySelectionActivity() {
+    this.startActivityForResult(
+        Intent(this, CountrySearchActivity::class.java),
+        RequestCode.COUNTRY_SEARCH_CODE
+    )
+}
+
+fun isCountrySelectionResult(resultCode: Int, requestCode: Int): Boolean {
+    return resultCode == Activity.RESULT_OK &&
+            requestCode == RequestCode.COUNTRY_SEARCH_CODE
 }
