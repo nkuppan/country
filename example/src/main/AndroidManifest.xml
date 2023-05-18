@@ -8,6 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CountryApp">
+
         <activity
             android:name="com.nkuppan.example.MainActivity"
             android:exported="true">
@@ -17,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.nkuppan.example.XMLMainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.nkuppan.example.ComposeMainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

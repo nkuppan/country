@@ -47,6 +47,12 @@ dependencies {
     api(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))
+
+    implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
+
+    implementation(Libs.AndroidX.Activity.ktx)
+    implementation(Libs.AndroidX.Fragment.ktx)
+
     testImplementation(Libs.AndroidX.Test.JUnit.core)
     androidTestImplementation(Libs.AndroidX.Test.JUnit.ktx)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.core)

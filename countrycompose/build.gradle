@@ -50,9 +50,30 @@ android {
 }
 
 dependencies {
+
+    implementation(platform(Libs.AndroidX.Compose.bom))
+    androidTestImplementation(platform(Libs.AndroidX.Compose.bom))
+
+    implementation(Libs.AndroidX.Compose.activity)
+    implementation(Libs.AndroidX.Compose.runtime)
+    implementation(Libs.AndroidX.Compose.foundation)
+    implementation(Libs.AndroidX.Compose.foundationLayout)
+    implementation(Libs.AndroidX.Compose.viewBinding)
+
+    implementation(Libs.AndroidX.Compose.ui)
+    implementation(Libs.AndroidX.Compose.uiTooling)
+    implementation(Libs.AndroidX.Compose.uiToolingPreview)
+
+    implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.materialIcon)
+
+    implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
+    implementation(Libs.AndroidX.Lifecycle.compose)
+
     api(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))
+
     testImplementation(Libs.AndroidX.Test.JUnit.core)
     androidTestImplementation(Libs.AndroidX.Test.JUnit.ktx)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.core)

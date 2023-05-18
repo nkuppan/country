@@ -30,6 +30,6 @@ class CountrySearchActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .add(R.id.place_holder, countryListFragment)
-            .commitAllowingStateLoss()
+            .commit()
     }
 }

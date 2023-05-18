@@ -32,6 +32,17 @@ object Libs {
                 "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.lifecycle}"
             const val runtime =
                 "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.lifecycle}"
+            const val compose =
+                "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.AndroidX.lifecycle}"
+        }
+
+        object Activity {
+            const val ktx = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
+        }
+
+        object Fragment {
+            const val ktx = "androidx.fragment:fragment-ktx:${Versions.AndroidX.fragment}"
+            const val test = "androidx.fragment:fragment-testing:${Versions.AndroidX.fragment}"
         }
 
         object Test {
@@ -62,41 +73,24 @@ object Libs {
         }
 
         object Compose {
-            const val bom =
-                "androidx.compose:compose-bom:${Versions.AndroidX.Compose.activity}"
-            const val activity =
-                "androidx.activity:activity-compose:${Versions.AndroidX.Compose.activity}"
-            const val poolingContainer =
-                "androidx.customview:customview-poolingcontainer:${Versions.AndroidX.Compose.poolingContainer}"
-            const val runtime =
-                "androidx.compose.runtime:runtime:${Versions.AndroidX.Compose.compose}"
-            const val animation =
-                "androidx.compose.animation:animation:${Versions.AndroidX.Compose.compose}"
-            const val foundation =
-                "androidx.compose.foundation:foundation:${Versions.AndroidX.Compose.composeFoundation}"
-            const val foundationLayout =
-                "androidx.compose.foundation:foundation-layout:${Versions.AndroidX.Compose.composeFoundation}"
-            const val viewBinding =
-                "androidx.compose.ui:ui-viewbinding:${Versions.AndroidX.Compose.compose}"
-            const val ui = "androidx.compose.ui:ui-util:${Versions.AndroidX.Compose.compose}"
-            const val uiUtils = "androidx.compose.ui:ui:${Versions.AndroidX.Compose.compose}"
-            const val uiText =
-                "androidx.compose.ui:ui-text-google-fonts:${Versions.AndroidX.Compose.compose}"
-            const val uiTooling =
-                "androidx.compose.ui:ui-tooling:${Versions.AndroidX.Compose.compose}"
-            const val uiToolingPreview =
-                "androidx.compose.ui:ui-tooling-preview:${Versions.AndroidX.Compose.compose}"
-            const val material =
-                "androidx.compose.material:material:${Versions.AndroidX.Compose.composeMaterial}"
-            const val materialIcon =
-                "androidx.compose.material:material-icons-extended:${Versions.AndroidX.Compose.composeMaterial}"
-            const val uiTestManifest =
-                "androidx.compose.ui:ui-test-manifest:${Versions.AndroidX.Compose.compose}"
+            const val bom = "androidx.compose:compose-bom:${Versions.AndroidX.Compose.composeBom}"
+
+            const val material = "androidx.compose.material:material"
+            const val material3 = "androidx.compose.material3:material3"
+            const val materialIcon = "androidx.compose.material:material-icons-core"
+            const val materialIconExtended = "androidx.compose.material:material-icons-extended"
+            const val uiTooling = "androidx.compose.ui:ui-tooling"
+            const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
+            const val foundation = "androidx.compose.foundation:foundation"
+            const val foundationLayout = "androidx.compose.foundation:foundation-layout"
+            const val ui = "androidx.compose.ui:ui"
+            const val activity = "androidx.activity:activity-compose"
+            const val runtime = "androidx.compose.runtime:runtime"
+            const val viewBinding = "androidx.compose.ui:ui-viewbinding"
         }
     }
 
     object Google {
-
         const val material = "com.google.android.material:material:${Versions.Google.material}"
         const val truth = "com.google.truth:truth:${Versions.Google.truth}"
     }

@@ -26,9 +26,16 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        compose true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.AndroidX.Compose.composeCompilerVersion
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +58,26 @@ dependencies {
     implementation(Libs.Google.material)
 
     implementation project(":country")
+    implementation project(":countrycompose")
+
+    implementation(platform(Libs.AndroidX.Compose.bom))
+    androidTestImplementation(platform(Libs.AndroidX.Compose.bom))
+
+    implementation(Libs.AndroidX.Compose.activity)
+    implementation(Libs.AndroidX.Compose.runtime)
+    implementation(Libs.AndroidX.Compose.foundation)
+    implementation(Libs.AndroidX.Compose.foundationLayout)
+    implementation(Libs.AndroidX.Compose.viewBinding)
+
+    implementation(Libs.AndroidX.Compose.ui)
+    implementation(Libs.AndroidX.Compose.uiTooling)
+    implementation(Libs.AndroidX.Compose.uiToolingPreview)
+
+    implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.materialIcon)
+
+    implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
+    implementation(Libs.AndroidX.Lifecycle.compose)
 
     implementation "androidx.core:core-ktx:1.10.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"

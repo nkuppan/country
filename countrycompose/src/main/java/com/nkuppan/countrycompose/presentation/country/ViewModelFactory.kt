@@ -1,4 +1,4 @@
-package com.nkuppan.country.presentation.country
+package com.nkuppan.countrycompose.presentation.country
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY

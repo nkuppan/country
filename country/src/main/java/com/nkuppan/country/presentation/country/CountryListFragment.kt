@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -25,12 +26,7 @@ import kotlinx.coroutines.launch
  **/
 open class CountryListFragment : BaseBindingFragment<FragmentCountryListBinding>() {
 
-    private val countryListViewModel: CountryListViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelFactory(application =requireActivity().application)
-        ).get(CountryListViewModel::class.java)
-    }
+    private val countryListViewModel: CountryListViewModel by viewModels { ViewModelFactory }
 
     private val searchViewModel: SearchViewModel by lazy {
         ViewModelProvider(this).get(SearchViewModel::class.java)
@@ -54,9 +50,7 @@ open class CountryListFragment : BaseBindingFragment<FragmentCountryListBinding>
     }
 
     override fun inflateLayout(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): FragmentCountryListBinding {
         return FragmentCountryListBinding.inflate(inflater)
     }
