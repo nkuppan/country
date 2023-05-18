@@ -5,25 +5,28 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id 'maven-publish'
 }
 
 android {
-    namespace 'com.nkuppan.country'
+    namespace 'com.nkuppan.country.core'
 
     compileSdk Versions.compileSdk
+
     defaultConfig {
         minSdk Versions.minSdk
         targetSdk Versions.targetSdk
         testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
     buildFeatures {
         viewBinding true
         dataBinding true
@@ -44,26 +47,25 @@ android {
 }
 
 dependencies {
-    api(project(":domain"))
-    implementation(project(":data"))
-    implementation(project(":core"))
+    // Extensions = ViewModel + LiveData
+    api(Libs.AndroidX.Lifecycle.liveDataKtx)
+    api(Libs.AndroidX.Lifecycle.viewModelKtx)
+    api(Libs.AndroidX.Lifecycle.runtime)
+
+    // Android support libs
+    api(Libs.Google.material)
+
+    api(Libs.AndroidX.Core.ktx)
+    api(Libs.AndroidX.appCompat)
+    api(Libs.AndroidX.constraintLayout)
+    api(Libs.AndroidX.recyclerView)
+
+    api(Libs.Kotlin.Coroutines.core)
+    api(Libs.Kotlin.Coroutines.android)
+
+    api(Libs.ThirdParty.gson)
+
     testImplementation(Libs.AndroidX.Test.JUnit.core)
     androidTestImplementation(Libs.AndroidX.Test.JUnit.ktx)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.core)
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.nkuppan.country'
-                artifactId = 'country'
-                version = Versions.versionName
-            }
-        }
-    }
 }

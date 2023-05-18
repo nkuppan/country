@@ -42,6 +42,7 @@ object Versions {
         const val splashScreen = "1.0.0"
 
         object Compose {
+            const val composeCompilerVersion = "1.4.7"
             const val compose = "1.4.0"
             const val composeFoundation = "1.4.0"
             const val composeMaterial = "1.4.0"
@@ -53,7 +54,7 @@ object Versions {
             const val core = "1.4.0"
             const val runner = "1.4.0"
             const val rules = "1.4.0"
-            const val jUnit = "1.1.3"
+            const val jUnit = "1.1.5"
             const val espresso = "3.4.0"
             const val uiautomator = "2.2.0"
         }

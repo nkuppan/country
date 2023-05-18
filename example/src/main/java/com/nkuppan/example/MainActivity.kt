@@ -1,20 +1,18 @@
 package com.nkuppan.example
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
-import com.nkuppan.country.core.utils.getCountryImage
 import com.nkuppan.country.domain.model.Country
-import com.nkuppan.country.presentation.country.CountryListBottomSheet
-import com.nkuppan.country.presentation.country.CountryListDialogFragment
-import com.nkuppan.country.presentation.country.CountrySearchActivity
-import com.nkuppan.country.utils.RequestParam
+import com.nkuppan.country.utils.getCountryImage
+import com.nkuppan.country.utils.getSelectedCountryData
+import com.nkuppan.country.utils.launchCountrySelectionActivity
+import com.nkuppan.country.utils.openCountrySelectionBottomSheet
+import com.nkuppan.country.utils.openCountrySelectionDialog
 import com.nkuppan.example.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
@@ -29,8 +27,7 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
 
-            val country: Country? =
-                result.data?.getParcelableExtra(RequestParam.SELECTED_VALUE)
+            val country: Country? = result.getSelectedCountryData()
 
             if (country != null) {
                 changeValues(country)
@@ -43,30 +40,20 @@ class MainActivity : AppCompatActivity() {
 
         _binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
 
-        findViewById<Button>(R.id.search_activity).setOnClickListener {
-            countrySelectionReceiver.launch(
-                Intent(this, CountrySearchActivity::class.java)
-            )
+        binding.searchActivity.setOnClickListener {
+            countrySelectionReceiver.launchCountrySelectionActivity(this)
         }
 
         binding.searchDialog.setOnClickListener {
-            val ft = supportFragmentManager.beginTransaction()
-            val countryListDialogFragment = CountryListDialogFragment()
-            countryListDialogFragment.countrySelection = {
+            supportFragmentManager.openCountrySelectionDialog {
                 changeValues(it)
-                countryListDialogFragment.dismiss()
             }
-            countryListDialogFragment.show(ft, "dialog")
         }
 
         binding.searchBottomSheet.setOnClickListener {
-            val ft = supportFragmentManager.beginTransaction()
-            val countryListBottomSheet = CountryListBottomSheet()
-            countryListBottomSheet.countrySelection = {
+            supportFragmentManager.openCountrySelectionBottomSheet {
                 changeValues(it)
-                countryListBottomSheet.dismiss()
             }
-            countryListBottomSheet.show(ft, "bottom_sheet_dialog")
         }
 
         binding.switchTheme.setOnClickListener {

@@ -1,13 +1,14 @@
-package com.nkuppan.country.core.utils
+package com.nkuppan.country.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
-import com.nkuppan.country.R
+import com.nkuppan.country.core.R
 import com.nkuppan.country.domain.model.Country
-import java.util.*
+import java.util.Locale
 
-
+@SuppressLint("DiscouragedApi")
 fun Country.getCountryImage(context: Context): Drawable? {
     try {
         var toLowerCase = "$countryCode".lowercase(Locale.ENGLISH)

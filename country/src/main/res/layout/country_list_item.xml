@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.nkuppan.country.core.utils.ImageExtKt" />
+        <import type="com.nkuppan.country.utils.ImageExtKt" />
 
         <import type="android.view.View" />
 

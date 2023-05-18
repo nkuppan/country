@@ -6,8 +6,8 @@ import android.speech.RecognizerIntent
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
-import com.nkuppan.country.R
-import java.util.*
+import com.nkuppan.country.core.R
+import java.util.Locale
 
 private const val TAG = "Country: Speech Request"
 

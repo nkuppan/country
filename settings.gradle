@@ -15,4 +15,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "country"
 include ':example'
+include ':core'
+include ':data'
+include ':domain'
 include ':country'
+include ':countrycompose'

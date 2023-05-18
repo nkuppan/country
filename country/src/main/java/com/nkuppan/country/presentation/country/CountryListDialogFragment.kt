@@ -13,10 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
-import com.nkuppan.country.R
+import com.nkuppan.country.core.utils.promptSpeechInputForCallback
 import com.nkuppan.country.core.view.BaseDialogBindingFragment
 import com.nkuppan.country.databinding.FragmentCountryListBinding
-import com.nkuppan.country.core.utils.promptSpeechInputForCallback
 import com.nkuppan.country.domain.model.Country
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -96,7 +95,7 @@ class CountryListDialogFragment : BaseDialogBindingFragment<FragmentCountryListB
     }
 
     private fun getSearchHintText(): String {
-        return getString(R.string.search_country)
+        return getString(com.nkuppan.country.core.R.string.search_country)
     }
 
     private fun processValue(it: String) {

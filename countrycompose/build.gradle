@@ -9,14 +9,16 @@ plugins {
 }
 
 android {
-    namespace 'com.nkuppan.country'
+    namespace 'com.nkuppan.countrycompose'
 
     compileSdk Versions.compileSdk
+
     defaultConfig {
         minSdk Versions.minSdk
         targetSdk Versions.targetSdk
         testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -27,12 +29,16 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        compose true
     }
 
     testOptions {
         unitTests {
             includeAndroidResources = true
         }
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.AndroidX.Compose.composeCompilerVersion
     }
 
     packagingOptions {
@@ -60,8 +66,8 @@ afterEvaluate {
                 // Applies the component for the release build variant.
                 from components.release
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.nkuppan.country'
-                artifactId = 'country'
+                groupId = 'com.nkuppan.countrycompose'
+                artifactId = 'countrycompose'
                 version = Versions.versionName
             }
         }
