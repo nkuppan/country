@@ -5,13 +5,10 @@ object Versions {
     const val minSdk = 21
     const val targetSdk = 33
 
-    const val versionCode = 9
-    const val versionName = "1.0.9"
+    const val versionCode = 14
+    const val versionName = "1.0.14"
 
-    const val androidGradlePlugin = "7.4.1"
-    const val ktlint = "0.42.1"
-    const val coil = "2.2.2"
-    const val playCoreUpdate = "2.0.0"
+    const val groupId = "com.github.nkuppan"
 
     object Kotlin {
         const val kotlin = "1.8.10"
@@ -31,20 +28,15 @@ object Versions {
         object Compose {
             const val composeBom = "2023.04.01"
             const val composeCompilerVersion = "1.4.4"
-            const val compose = "1.4.0"
-            const val composeFoundation = "1.4.0"
-            const val composeMaterial = "1.4.0"
-            const val activity = "1.5.0"
-            const val poolingContainer = "1.0.0-rc01"
         }
 
         object Test {
             const val core = "1.4.0"
             const val runner = "1.4.0"
             const val rules = "1.4.0"
-            const val jUnit = "1.1.5"
+            const val jUnit = "4.13.2"
+            const val jUnitExt = "1.1.5"
             const val espresso = "3.4.0"
-            const val uiautomator = "2.2.0"
         }
     }
 
@@ -53,7 +45,6 @@ object Versions {
         const val material = "1.8.0"
     }
     object Test {
-        const val jUnitCore = "4.13.2"
         const val cashTurbine = "0.7.0"
     }
 

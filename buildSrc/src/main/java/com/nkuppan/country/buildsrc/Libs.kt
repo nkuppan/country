@@ -42,12 +42,9 @@ object Libs {
 
         object Fragment {
             const val ktx = "androidx.fragment:fragment-ktx:${Versions.AndroidX.fragment}"
-            const val test = "androidx.fragment:fragment-testing:${Versions.AndroidX.fragment}"
         }
 
         object Test {
-            const val runner = "androidx.test:runner:${Versions.AndroidX.Test.runner}"
-            const val rules = "androidx.test:rules:${Versions.AndroidX.Test.rules}"
             const val instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
             object Core {
@@ -56,19 +53,12 @@ object Libs {
 
             object JUnit {
                 const val core = "junit:junit:${Versions.AndroidX.Test.jUnit}"
-                const val ktx = "androidx.test.ext:junit-ktx:${Versions.AndroidX.Test.jUnit}"
+                const val ktx = "androidx.test.ext:junit-ktx:${Versions.AndroidX.Test.jUnitExt}"
             }
 
             object Espresso {
                 const val core =
                     "androidx.test.espresso:espresso-core:${Versions.AndroidX.Test.espresso}"
-                const val contrib =
-                    "androidx.test.espresso:espresso-contrib:${Versions.AndroidX.Test.espresso}"
-            }
-
-            object UiAutomator {
-                const val uiautomator =
-                    "androidx.test.uiautomator:uiautomator:${Versions.AndroidX.Test.uiautomator}"
             }
         }
 
@@ -84,7 +74,7 @@ object Libs {
             const val foundation = "androidx.compose.foundation:foundation"
             const val foundationLayout = "androidx.compose.foundation:foundation-layout"
             const val ui = "androidx.compose.ui:ui"
-            const val activity = "androidx.activity:activity-compose"
+            const val activity = "androidx.activity:activity-compose:1.7.1"
             const val runtime = "androidx.compose.runtime:runtime"
             const val viewBinding = "androidx.compose.ui:ui-viewbinding"
         }
@@ -95,15 +85,7 @@ object Libs {
         const val truth = "com.google.truth:truth:${Versions.Google.truth}"
     }
 
-
-    object Mockito {
-        const val core = "org.mockito:mockito-core:${Versions.Mockito.core}"
-        const val ktx = "org.mockito.kotlin:mockito-kotlin:${Versions.Mockito.ktx}"
-        const val android = "org.mockito:mockito-android:${Versions.Mockito.android}"
-    }
-
     object Test {
-        const val junit = "junit:junit:${Versions.Test.jUnitCore}"
         const val cashTurbine = "app.cash.turbine:turbine:${Versions.Test.cashTurbine}"
     }
 

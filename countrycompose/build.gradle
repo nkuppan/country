@@ -16,6 +16,10 @@ android {
     defaultConfig {
         minSdk Versions.minSdk
         targetSdk Versions.targetSdk
+
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
+
         testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
     }
 
@@ -70,6 +74,8 @@ dependencies {
     implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
     implementation(Libs.AndroidX.Lifecycle.compose)
 
+    implementation(Libs.ThirdParty.gson)
+
     api(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))
@@ -82,13 +88,10 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
-                // Applies the component for the release build variant.
                 from components.release
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.nkuppan.countrycompose'
-                artifactId = 'countrycompose'
+                groupId = Versions.groupId
+                artifactId = project.name
                 version = Versions.versionName
             }
         }

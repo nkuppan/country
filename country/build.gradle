@@ -50,8 +50,16 @@ dependencies {
 
     implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
 
+    implementation(Libs.AndroidX.Core.ktx)
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.constraintLayout)
+    implementation(Libs.AndroidX.recyclerView)
+    implementation(Libs.Google.material)
+
     implementation(Libs.AndroidX.Activity.ktx)
     implementation(Libs.AndroidX.Fragment.ktx)
+
+    implementation(Libs.ThirdParty.gson)
 
     testImplementation(Libs.AndroidX.Test.JUnit.core)
     androidTestImplementation(Libs.AndroidX.Test.JUnit.ktx)
@@ -61,13 +69,10 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
-                // Applies the component for the release build variant.
                 from components.release
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.nkuppan.country'
-                artifactId = 'country'
+                groupId = Versions.groupId
+                artifactId = project.name
                 version = Versions.versionName
             }
         }

@@ -15,6 +15,10 @@ android {
     defaultConfig {
         minSdk Versions.minSdk
         targetSdk Versions.targetSdk
+
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
+
         testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
     }
 

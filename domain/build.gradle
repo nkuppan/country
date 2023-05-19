@@ -12,15 +12,20 @@ android {
 
     compileSdk Versions.compileSdk
 
-            defaultConfig {
-                minSdk Versions.minSdk
-                        targetSdk Versions.targetSdk
-                        testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
-            }
+    defaultConfig {
+
+        minSdk Versions.minSdk
+        targetSdk Versions.targetSdk
+
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
+
+        testInstrumentationRunner Libs.AndroidX.Test.instrumentationRunner
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
