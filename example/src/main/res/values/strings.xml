@@ -2,6 +2,7 @@
     <string name="app_name">Country Example</string>
     <string name="country_search_as_page" tools:ignore="ExtraTranslation">Country Search As Page</string>
     <string name="country_search_as_activity">Country Search As Activity</string>
+    <string name="country_search_as_legacy_activity">Country Search As Legacy Activity</string>
     <string name="country_search_as_dialog">Country Search As Dialog</string>
     <string name="country">country</string>
     <string name="country_placeholder">[Country Name]</string>

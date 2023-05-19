@@ -89,6 +89,14 @@
                 android:textColor="@android:color/white" />
 
             <Button
+                android:id="@+id/search_legacy_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/country_search_as_legacy_activity"
+                android:textColor="@android:color/white" />
+
+            <Button
                 android:id="@+id/search_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

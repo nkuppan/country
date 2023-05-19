@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.nkuppan.country.utils.ImageExtKt" />
+        <import type="com.github.nkuppan.country.utils.ImageExtKt" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.nkuppan.country.domain.model.Country" />
+            type="com.github.nkuppan.country.domain.model.Country" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

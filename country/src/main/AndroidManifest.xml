@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="com.nkuppan.country.presentation.country.CountrySearchActivity"
+            android:name="com.github.nkuppan.country.presentation.country.CountrySearchActivity"
             android:exported="true"
             android:theme="@style/Theme.CountryApp" />
     </application>

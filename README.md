@@ -65,8 +65,8 @@ Calling as an activity:
 ```kotlin
 
 //Registering result receiver as a global variable or registering before Lifecycle.Event.CREATED
-import com.nkuppan.country.utils.getCountryImage
-import com.nkuppan.country.utils.launchCountrySelectionActivity
+import com.github.nkuppan.country.utils.getCountryImage
+import com.github.nkuppan.country.utils.launchCountrySelectionActivity
 
 private val countrySelectionReceiver = registerForActivityResult(
     ActivityResultContracts.StartActivityForResult()
@@ -101,8 +101,8 @@ activity.launchCountrySelectionActivity()
 You will receive your result once the user is selected the country
 
 ```kotlin
-import com.nkuppan.country.utils.getSelectedCountryData
-import com.nkuppan.country.utils.isCountrySelectionResult
+import com.github.nkuppan.country.utils.getSelectedCountryData
+import com.github.nkuppan.country.utils.isCountrySelectionResult
 
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
@@ -119,7 +119,7 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 Calling as a dialog:
 --------------
 ```kotlin
-import com.nkuppan.country.utils.openCountrySelectionDialog
+import com.github.nkuppan.country.utils.openCountrySelectionDialog
 
 supportFragmentManager.openCountrySelectionDialog {
     changeValues(it)
@@ -129,7 +129,7 @@ supportFragmentManager.openCountrySelectionDialog {
 Calling as a bottom sheet:
 --------------
 ```kotlin
-import com.nkuppan.country.utils.openCountrySelectionBottomSheet
+import com.github.nkuppan.country.utils.openCountrySelectionBottomSheet
 
 supportFragmentManager.openCountrySelectionBottomSheet {
     changeValues(it)

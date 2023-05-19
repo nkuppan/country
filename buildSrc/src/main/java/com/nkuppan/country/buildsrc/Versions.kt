@@ -5,8 +5,8 @@ object Versions {
     const val minSdk = 21
     const val targetSdk = 33
 
-    const val versionCode = 15
-    const val versionName = "1.0.15"
+    const val versionCode = 16
+    const val versionName = "1.0.16"
 
     const val groupId = "com.github.nkuppan.country"
 

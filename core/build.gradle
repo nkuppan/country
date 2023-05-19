@@ -9,7 +9,7 @@ plugins {
 apply from: "${rootDir}/maven_publish.gradle"
 
 android {
-    namespace 'com.nkuppan.country.core'
+    namespace 'com.github.nkuppan.country.core'
 
     compileSdk Versions.compileSdk
 

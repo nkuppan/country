@@ -8,7 +8,7 @@ plugins {
 
 android {
 
-    namespace 'com.nkuppan.example'
+    namespace 'com.github.nkuppan.country.example'
 
     compileSdk(Versions.compileSdk)
 
@@ -57,8 +57,11 @@ dependencies {
 
     implementation(Libs.Google.material)
 
-    implementation("com.github.nkuppan.country:country:1.0.15")
-    implementation("com.github.nkuppan.country:countrycompose:1.0.15")
+//    implementation("com.github.nkuppan.country:country:1.0.15")
+//    implementation("com.github.nkuppan.country:countrycompose:1.0.15")
+
+    implementation project(":country")
+    implementation project(":countrycompose")
 
     implementation(platform(Libs.AndroidX.Compose.bom))
     androidTestImplementation(platform(Libs.AndroidX.Compose.bom))
