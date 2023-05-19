@@ -4,7 +4,7 @@ import com.nkuppan.country.buildsrc.Versions
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-parcelize'
+    id 'org.jetbrains.kotlin.plugin.parcelize'
 }
 
 apply from: "${rootDir}/maven_publish.gradle"

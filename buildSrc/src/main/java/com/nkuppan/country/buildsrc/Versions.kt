@@ -5,10 +5,10 @@ object Versions {
     const val minSdk = 21
     const val targetSdk = 33
 
-    const val versionCode = 14
-    const val versionName = "1.0.14"
+    const val versionCode = 15
+    const val versionName = "1.0.15"
 
-    const val groupId = "com.github.nkuppan"
+    const val groupId = "com.github.nkuppan.country"
 
     object Kotlin {
         const val kotlin = "1.8.10"
