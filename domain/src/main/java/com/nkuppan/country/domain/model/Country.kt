@@ -1,10 +1,9 @@
 package com.nkuppan.country.domain.model
 
+import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Country(
     @SerializedName("name")
     var name: String? = null,
@@ -22,4 +21,40 @@ data class Country(
     var currencyCode: String? = null,
     @SerializedName("currency")
     var currency: Currency? = null,
-) : Parcelable
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readParcelable(Currency::class.java.classLoader)
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(countryCode)
+        parcel.writeString(dialCode)
+        parcel.writeString(continent)
+        parcel.writeString(countryGroup)
+        parcel.writeString(countryStates)
+        parcel.writeString(currencyCode)
+        parcel.writeParcelable(currency, flags)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Country> {
+        override fun createFromParcel(parcel: Parcel): Country {
+            return Country(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Country?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
