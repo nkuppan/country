@@ -5,8 +5,9 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id 'maven-publish'
 }
+
+apply from: "${rootDir}/maven_publish.gradle"
 
 android {
     namespace 'com.nkuppan.countrycompose'
@@ -83,17 +84,4 @@ dependencies {
     testImplementation(Libs.AndroidX.Test.JUnit.core)
     androidTestImplementation(Libs.AndroidX.Test.JUnit.ktx)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.core)
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = Versions.groupId
-                artifactId = project.name
-                version = Versions.versionName
-            }
-        }
-    }
 }

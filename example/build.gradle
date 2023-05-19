@@ -57,8 +57,11 @@ dependencies {
 
     implementation(Libs.Google.material)
 
-    implementation project(":country")
-    implementation project(":countrycompose")
+    implementation("com.github.nkuppan:country:1.0.14")
+    implementation("com.github.nkuppan:countrycompose:1.0.14")
+
+//    implementation project(":country")
+//    implementation project(":countrycompose")
 
     implementation(platform(Libs.AndroidX.Compose.bom))
     androidTestImplementation(platform(Libs.AndroidX.Compose.bom))

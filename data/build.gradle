@@ -7,6 +7,8 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+apply from: "${rootDir}/maven_publish.gradle"
+
 android {
     namespace 'com.nkuppan.country.data'
 
