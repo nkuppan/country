@@ -75,17 +75,44 @@ class XMLMainActivity : AppCompatActivity() {
 
         country ?: return
 
-        binding.countryName.text = "Name\t\t : ${country.name}"
-        binding.countryImage.setImageDrawable(country.getCountryImage(this@XMLMainActivity))
-        binding.countryCode.text = "Code\t\t : ${country.countryCode}"
-        binding.countryDialCode.text = "Dial Code\t\t : ${country.dialCode}"
-        binding.countryCurrencyCode.text = "Currency Code\t\t : ${country.currencyCode}"
-        binding.countrySymbol.text =
-            "Currency Symbol\t\t : ${country.currency?.symbol ?: "[ NONE ]"}"
+        binding.countryName.text = buildString {
+            append("Name\t\t : ")
+            append(country.name)
+        }
+
+        binding.countryImage.setImageDrawable(
+            country.getCountryImage(this@XMLMainActivity)
+        )
+
+        binding.countryCode.text = buildString {
+            append("Code\t\t : ")
+            append(country.countryCode)
+        }
+
+        binding.countryDialCode.text = buildString {
+            append("Dial Code\t\t : ")
+            append(country.dialCode)
+        }
+
+        binding.countryCurrencyCode.text = buildString {
+            append("Currency Code\t\t : ")
+            append(country.currencyCode)
+        }
+
+        binding.countrySymbol.text = buildString {
+            append("Currency Symbol\t\t : ")
+            append(country.currency?.symbol ?: "[ NONE ]")
+        }
 
         Snackbar.make(
             binding.root,
-            "Selected Country [ name, code ] [${country.name} , ${country.countryCode}]",
+            buildString {
+                append("Selected Country [ name, code ] [")
+                append(country.name)
+                append(" , ")
+                append(country.countryCode)
+                append("]")
+            },
             Snackbar.LENGTH_SHORT
         ).show()
     }
