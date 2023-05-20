@@ -6,13 +6,21 @@ Country Selection Library
 
 Country selection library. Can launch this selection picker as an activity, fragment, dialog or bottom sheet to show the list of country with flag. Please follow the below implementation to access the flag selection picker.
 
-<img src="art/videos/country.gif" width="270" height="570"/>
+
+
+|                             XML Sample                             |                             Compose Sample                             |
+|:------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+|  <img src="art/videos/xml_sample.webm" width="270" height="570"/>  |  <img src="art/videos/compose_sample.webm" width="270" height="570"/>  |
 
 <br>
 
-|                   Activity                    |                   Dialog                    |                   Bottom Sheet                    |                   Dark Theme                    |
-|:---------------------------------------------:|:-------------------------------------------:|:-------------------------------------------------:|:-----------------------------------------------:|
-| ![Activity](art/screenshots/screenshot-1.png) | ![Dialog](art/screenshots/screenshot-2.png) | ![Bottom Sheet](art/screenshots/screenshot-3.png) | ![Dark Theme](art/screenshots/screenshot-4.png) |
+|                     XML Activity                      |                      XML Dialog                       |                   XML Bottom Sheet                    |
+|:-----------------------------------------------------:|:-----------------------------------------------------:|:-----------------------------------------------------:|
+|   ![XML Activity](art/screenshots/screenshot-1.png)   |   ![XML Dialog ](art/screenshots/screenshot-2.png)    | ![XML Bottom Sheet](art/screenshots/screenshot-3.png) |
+|    :---------------------------------------------:    | :---------------------------------------------------: |  :-------------------------------------------------:  |
+|                   Compose New Page                    |                    Compose Dialog                     |                      Dark Theme                       |
+|    :---------------------------------------------:    | :---------------------------------------------------: |  :-------------------------------------------------:  |
+| ![Compose New Page](art/screenshots/screenshot-5.png) |  ![Compose Dialog](art/screenshots/screenshot-6.png)  |    ![Dark Theme](art/screenshots/screenshot-4.png)    | 
 
 How to add to your project
 --------------
@@ -49,7 +57,8 @@ android {
 }
 
 dependencies {
-    implementation "com.github.nkuppan:country:${latestVersion}"
+    implementation("com.github.nkuppan.country:country:${latestVersion}")
+    implementation("com.github.nkuppan.country:countrycompose:${latestVersion}")
 }
 ```
 
