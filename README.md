@@ -8,18 +8,16 @@ Country selection library. Can launch this selection picker as an activity, frag
 
 
 
-|                             XML Sample                             |                             Compose Sample                             |
-|:------------------------------------------------------------------:|:----------------------------------------------------------------------:|
-|  <img src="art/videos/xml_sample.webm" width="270" height="570"/>  |  <img src="art/videos/compose_sample.webm" width="270" height="570"/>  |
+|                           XML Sample                            |                           Compose Sample                            |
+|:---------------------------------------------------------------:|:-------------------------------------------------------------------:|
+| <img src="art/videos/xml_sample.gif" width="270" height="570"/> | <img src="art/videos/compose_sample.gif" width="270" height="570"/> |
 
 <br>
 
 |                     XML Activity                      |                      XML Dialog                       |                   XML Bottom Sheet                    |
 |:-----------------------------------------------------:|:-----------------------------------------------------:|:-----------------------------------------------------:|
 |   ![XML Activity](art/screenshots/screenshot-1.png)   |   ![XML Dialog ](art/screenshots/screenshot-2.png)    | ![XML Bottom Sheet](art/screenshots/screenshot-3.png) |
-|    :---------------------------------------------:    | :---------------------------------------------------: |  :-------------------------------------------------:  |
 |                   Compose New Page                    |                    Compose Dialog                     |                      Dark Theme                       |
-|    :---------------------------------------------:    | :---------------------------------------------------: |  :-------------------------------------------------:  |
 | ![Compose New Page](art/screenshots/screenshot-5.png) |  ![Compose Dialog](art/screenshots/screenshot-6.png)  |    ![Dark Theme](art/screenshots/screenshot-4.png)    | 
 
 How to add to your project
