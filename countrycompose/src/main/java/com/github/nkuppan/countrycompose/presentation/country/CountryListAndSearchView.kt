@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -35,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.nkuppan.country.core.R
 import com.github.nkuppan.country.domain.model.Country
+import com.github.nkuppan.countrycompose.ui.theme.CountryAppTheme
 import com.github.nkuppan.countrycompose.utils.getCountryImage
 
 @Composable
@@ -73,7 +75,7 @@ internal fun CountrySearchView(
                     )
                 },
                 leadingIcon = {
-                    Image(
+                    Icon(
                         modifier = Modifier
                             .padding(8.dp)
                             .size(24.dp)
@@ -87,7 +89,7 @@ internal fun CountrySearchView(
                 },
                 trailingIcon = {
                     if (showClear) {
-                        Image(
+                        Icon(
                             modifier = Modifier
                                 .padding(8.dp)
                                 .size(24.dp)
@@ -197,7 +199,7 @@ internal fun CountryDetailsView(
 @Composable
 @Preview(showBackground = true)
 private fun CountryDetailsPreview() {
-    Column {
+    CountryAppTheme(isDarkTheme = true) {
         CountrySearchAndListView(
             countries = listOf(
                 Country("India", "in", ""),

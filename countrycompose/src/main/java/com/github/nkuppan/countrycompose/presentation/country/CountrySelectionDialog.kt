@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.nkuppan.country.domain.model.Country
+import com.github.nkuppan.countrycompose.ui.theme.CountryAppTheme
 
 @Composable
 fun CountrySelectionDialog(
@@ -16,17 +17,19 @@ fun CountrySelectionDialog(
 
     countryListViewModel.loadCountries()
 
-    Dialog(
-        onDismissRequest = {
-            onDismissRequest?.invoke()
+    CountryAppTheme {
+        Dialog(
+            onDismissRequest = {
+                onDismissRequest?.invoke()
+            }
+        ) {
+            CountrySearchAndListView(
+                modifier,
+                countryListViewModel,
+                onDismissRequest,
+                selection
+            )
         }
-    ) {
-        CountrySearchAndListView(
-            modifier,
-            countryListViewModel,
-            onDismissRequest,
-            selection
-        )
     }
 }
 
