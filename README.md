@@ -66,6 +66,8 @@ Simple steps to achieve. Call country search activity with result.
 
 Starting country selection as activity based
 
+## XML Way
+
 Calling as an activity:
 --------------
 
@@ -140,6 +142,35 @@ import com.github.nkuppan.country.utils.openCountrySelectionBottomSheet
 
 supportFragmentManager.openCountrySelectionBottomSheet {
     changeValues(it)
+}
+```
+
+## Compose Way
+
+Calling as a compose dialog:
+--------------
+
+Call the dialog inside compose like below. It will open the country selection as dialog with search option. Handle the dialog dismiss on the callback.
+
+```kotlin
+import com.github.nkuppan.countrycompose.presentation.country.CountrySelectionDialog
+
+CountrySelectionDialog(onDismissRequest = {/*TODO Close dialog*/}) { country ->
+    message = "Selected Country ${country.name} & ${country.countryCode}"
+}
+```
+
+Calling as a compose page:
+--------------
+
+Call the page inside compose like below. It will open the country selection as new page with search option. Handle the page backpress on the callback.
+You can use this inside the composable using navigation-compose as well.
+
+```kotlin
+import com.github.nkuppan.countrycompose.presentation.country.CountrySelectionPage
+
+CountrySelectionPage(onDismissRequest = {/*TODO Close page*/}) { country ->
+    message = "Selected Country ${country.name} & ${country.countryCode}"
 }
 ```
 
