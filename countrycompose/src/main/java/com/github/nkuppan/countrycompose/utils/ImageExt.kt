@@ -3,13 +3,13 @@ package com.github.nkuppan.countrycompose.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import com.github.nkuppan.country.core.R
-import com.github.nkuppan.country.domain.model.Country
-import java.util.Locale
 
 @SuppressLint("DiscouragedApi")
-fun Country.getCountryImage(context: Context): Int {
+fun String?.getCountryImage(context: Context): Int {
     try {
-        var toLowerCase = "$countryCode".lowercase(Locale.ENGLISH)
+        val countryCode = this ?: ""
+
+        var toLowerCase = countryCode.lowercase()
 
         if (toLowerCase == "do") {
             toLowerCase = "ic_do"

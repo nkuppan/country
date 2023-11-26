@@ -1,4 +1,4 @@
-package com.github.nkuppan.countrycompose.presentation.country
+package com.github.nkuppan.countrycompose.presentation.currency
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,13 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.github.nkuppan.country.domain.model.Country
-import com.github.nkuppan.countrycompose.ui.components.CountryItemView
+import com.github.nkuppan.country.domain.model.Currency
+import com.github.nkuppan.countrycompose.presentation.country.CountryListViewModel
 import com.github.nkuppan.countrycompose.ui.components.CountrySearchView
+import com.github.nkuppan.countrycompose.ui.components.CountryWithCurrencyItemView
 import com.github.nkuppan.countrycompose.ui.theme.CountryAppTheme
 import com.github.nkuppan.countrycompose.utils.getCountryImage
+import com.github.nkuppan.countrycompose.utils.getCurrencyName
 
 @Composable
-internal fun CountryListAndSearchView(
+internal fun CountryCurrencyListAndSearchView(
     modifier: Modifier = Modifier,
     countryListViewModel: CountryListViewModel,
     dismiss: (() -> Unit)? = null,
@@ -28,7 +31,7 @@ internal fun CountryListAndSearchView(
 
     val countries by countryListViewModel.countryList.collectAsState()
 
-    CountryListAndSearchView(
+    CountryCurrencyListAndSearchView(
         countries = countries,
         selection = selection,
         modifier = modifier,
@@ -38,7 +41,7 @@ internal fun CountryListAndSearchView(
 }
 
 @Composable
-internal fun CountryListAndSearchView(
+internal fun CountryCurrencyListAndSearchView(
     countries: List<Country>,
     selection: ((Country) -> Unit)?,
     modifier: Modifier = Modifier,
@@ -53,7 +56,7 @@ internal fun CountryListAndSearchView(
             )
         },
     ) {
-        CountryListView(
+        CountryCurrencyListView(
             countries = countries,
             selection = selection,
             modifier = modifier
@@ -64,7 +67,7 @@ internal fun CountryListAndSearchView(
 }
 
 @Composable
-internal fun CountryListView(
+internal fun CountryCurrencyListView(
     countries: List<Country>,
     selection: ((Country) -> Unit)?,
     modifier: Modifier = Modifier
@@ -73,12 +76,13 @@ internal fun CountryListView(
 
     LazyColumn(modifier = modifier) {
         items(countries) {
-            CountryItemView(
+            CountryWithCurrencyItemView(
+                name = it.name ?: "",
+                flagImage = it.countryCode.getCountryImage(context),
                 modifier = Modifier.clickable {
                     selection?.invoke(it)
                 },
-                name = it.name ?: "",
-                flagImage = it.countryCode.getCountryImage(context)
+                description = it.getCurrencyName(context)
             )
         }
     }
@@ -89,10 +93,10 @@ internal fun CountryListView(
 @Preview(showBackground = true)
 private fun CountryDetailsPreview() {
     CountryAppTheme(isDarkTheme = true) {
-        CountryListAndSearchView(
+        CountryCurrencyListAndSearchView(
             countries = listOf(
-                Country("India", "in", ""),
-                Country("USA", "us", ""),
+                Country("India", "in", "", currency = Currency(name = "Rupees", symbol = "₹")),
+                Country("USA", "us", "", currency = Currency(name = "Rupees", symbol = "$")),
             ),
             selection = {
 

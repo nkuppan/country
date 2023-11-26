@@ -57,13 +57,12 @@ dependencies {
 
     implementation(Libs.Google.material)
 
-    implementation("com.github.nkuppan.country:country:1.0.18")
-    implementation("com.github.nkuppan.country:countrycompose:1.0.18")
-
-//    implementation project(":country")
-//    implementation project(":countrycompose")
+    implementation project(":country")
+    implementation project(":countrycompose")
 
     implementation(platform(Libs.AndroidX.Compose.bom))
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.7.5'
+    implementation 'androidx.navigation:navigation-compose:2.7.5'
     androidTestImplementation(platform(Libs.AndroidX.Compose.bom))
 
     implementation(Libs.AndroidX.Compose.activity)

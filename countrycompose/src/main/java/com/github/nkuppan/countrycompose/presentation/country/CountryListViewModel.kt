@@ -22,6 +22,10 @@ class CountryListViewModel(
 
     private var currentJob: Job? = null
 
+    init {
+        loadCountries()
+    }
+
     fun loadCountries(countryName: String? = "") {
 
         currentJob?.cancel()

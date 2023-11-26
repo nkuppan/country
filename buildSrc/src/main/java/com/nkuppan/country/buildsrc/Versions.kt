@@ -1,12 +1,12 @@
 package com.nkuppan.country.buildsrc
 
 object Versions {
-    const val compileSdk = 33
+    const val compileSdk = 34
     const val minSdk = 21
-    const val targetSdk = 33
+    const val targetSdk = 34
 
-    const val versionCode = 18
-    const val versionName = "1.0.18"
+    const val versionCode = 20
+    const val versionName = "1.1.0"
 
     const val groupId = "com.github.nkuppan"
 

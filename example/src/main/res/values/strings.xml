@@ -4,6 +4,9 @@
     <string name="country_search_as_activity">Country Search As Activity</string>
     <string name="country_search_as_legacy_activity">Country Search As Legacy Activity</string>
     <string name="country_search_as_dialog">Country Search As Dialog</string>
+    <string name="country_and_currency_search_as_dialog">Country And Currency Search As Dialog</string>
+    <string name="country_and_currency_search_as_page">Country And Currency Search As Page</string>
+
     <string name="country">country</string>
     <string name="country_placeholder">[Country Name]</string>
     <string name="country_code">[Country Code]</string>
