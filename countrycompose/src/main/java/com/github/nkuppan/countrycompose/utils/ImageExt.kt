@@ -7,7 +7,7 @@ import com.github.nkuppan.country.core.R
 @SuppressLint("DiscouragedApi")
 fun String?.getCountryImage(context: Context): Int {
     try {
-        val countryCode = this ?: ""
+        val countryCode = this ?: return R.drawable.ic_image
 
         var toLowerCase = countryCode.lowercase()
 
